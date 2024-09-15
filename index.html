@@ -145,7 +145,7 @@
 
             <div class="home__data">
               <h1 class="home__title">Olá, meu nome é Rennifer!</h1>
-              <h3 class="home__subtitle">Eu sou um <span class="text"></span></h3>
+              <h3 class="home__subtitle">Eu sou <span class="text"></span></h3>
               <p class="home__description">
                 JavaScript | HTML5 | CSS3 | Next.js dentre outros. Buscando
                 Oportunidade de Estágio.
@@ -438,12 +438,12 @@
               <div class="qualification__data">
                 <div>
                   <h3 class="qualification__title">
-                    Análise e Desenvolvimento de Sistemas
+                    Javascript e TypeScript - front-end e back-end (Full Stack)
                   </h3>
-                  <span class="qualification__subtitle">Faculdade Estácio</span>
+                  <span class="qualification__subtitle">Udemy</span>
                   <div class="qualification__calendar">
                     <i class="uil uil-calendar-alt"></i>
-                    2023 - 2025.1
+                    Concluido: 09/2024
                   </div>
                 </div>
 
@@ -464,12 +464,12 @@
 
                 <div>
                   <h3 class="qualification__title">
-                    Javascript e TypeScript - front-end e back-end (Full Stack)
+                    Análise e Desenvolvimento de Sistemas
                   </h3>
-                  <span class="qualification__subtitle">Udemy</span>
+                  <span class="qualification__subtitle">Faculdade Estácio</span>
                   <div class="qualification__calendar">
                     <i class="uil uil-calendar-alt"></i>
-                    Concluido: 09/2024
+                    Cursando: 2023 - 2025.1
                   </div>
                 </div>
               </div>
@@ -510,7 +510,7 @@
                   >
                   <div class="qualification__calendar">
                     <i class="uil uil-calendar-alt"></i>
-                    2024 Em andamento
+                    09/2024 Em andamento
                   </div>
                 </div>
               </div>
@@ -688,7 +688,8 @@
                   Explore o PokeNext para acessar informações completas e atualizadas sobre todos os Pokémon. Descubra detalhes sobre características, habilidades e evoluções de cada Pokémon.
                 </p>
                 <a
-                  href="https://pokenext-red.vercel.app/"
+                  href="https://pokenext-red.vercel.app/" 
+                  target="_blank"
                   class="button button--flex button--small portfolio__button"
                 >
                   Demonstração
@@ -711,6 +712,7 @@
                 </p>
                 <a
                   href="https://buscador-njns8a1hx-rennifer-teixeiras-projects.vercel.app/"
+                  target="_blank"
                   class="button button--flex button--small portfolio__button"
                 >
                   Demonstração
@@ -764,39 +766,41 @@
             </div>
           </div>
 
-          <form action="" class=".contact__form grid">
+          <form action="https://api.staticforms.xyz/submit" method="post" class="contact__form grid">
             <div class="contact__inputs grid">
               <div class="contact__content">
                 <label for="" class="contact__label">Nome</label>
-                <input type="text" class="contact__input" />
+                <input type="text" name="name" placeholder="Digite seu nome" autocomplete="off" required class="contact__input" />
               </div>
               <div class="contact__content">
                 <label for="" class="contact__label">Email</label>
-                <input type="email" class="contact__input" />
+                <input type="email" name="email" placeholder="Digite seu email" autocomplete="off" required class="contact__input" />
               </div>
             </div>
             <div class="contact__content">
               <label for="" class="contact__label">Projeto</label>
-              <input type="text" class="contact__input" />
+              <input type="text" name="projeto" placeholder="Digite seu Projeto" autocomplete="off" required class="contact__input" />
             </div>
             <div class="contact__content">
               <label for="" class="contact__label">Mensagem</label>
-              <textarea
-                name=""
-                id=""
-                cols="0"
-                rows="7"
-                class="contact__input"
+              <textarea name="message" 
+              cols="30" 
+              rows="10" 
+              placeholder="Digite sua mensagem" 
+              required
+              class="contact__input"
               ></textarea>
-              <input type="text" class="contact__input" />
+              <input type="text" name="message"  class="contact__input" />
             </div>
 
             <div>
-              <a href="#" class="button button--flex">
+              <button type="submit" href="obrigado.html" class="button button--flex">
                 Enviar Mensagem
                 <i class="uil uil-message button__icon"></i>
-              </a>
+              </button>
             </div>
+            <input type="hidden" name="accessKey" value="f869f78d-1f23-459f-9aa7-051cc77efcad">
+            <input type="hidden" name="redirectTo" value="http://127.0.0.1:5500/obrigado.html#contact">
           </form>
         </div>
       </section>

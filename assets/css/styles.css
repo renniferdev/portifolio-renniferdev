@@ -929,6 +929,48 @@ img {
     color: var(--title-color);
 }
 
+.button {
+    display: inline-block;
+    background-color: green;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: var(--font-medium);
+    cursor: pointer;
+}
+
+/*Página do Obrigado*/
+
+.obrigado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #101026;
+    flex-direction: column;
+ }
+ .textt{
+     font-size: 45px;
+     color: #f5f5f5;
+     margin-bottom: 30px;
+ }
+ .paragrafoo{
+     color: #f5f5f5;
+     margin-bottom: 50px;
+ }
+ .btnn{
+     padding: 15px 55px;
+     background: #f5f5f5;
+     text-decoration: none;
+     color: #101026;
+     font-size: 18px;
+     transition: all 0.5s;
+ }
+ .btnn:hover{
+     border-radius: 16px;
+ }
+
 /*==================== FOOTER ====================*/
 .footer {
     padding-top: 2rem;
@@ -939,7 +981,7 @@ img {
 }
 
 .footer__bg {
-    background-color: var(--first-color-second);
+    background-color: rgb(67, 211, 221);
     padding: 2rem 0rem 3rem;
 }
 
@@ -954,6 +996,7 @@ img {
 
 .footer__links {
     display: flex;
+    
     flex-direction: column;
     row-gap: 1.5rem;
 }
@@ -1294,6 +1337,7 @@ img {
     }
 
     .footer__copy {
+        color: white;
         margin-top: 4.5rem;
     }
 }

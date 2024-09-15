@@ -210,3 +210,23 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
+
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    // Obtém o valor do campo de e-mail
+    var email = document.getElementById("email").value;
+    var mensagemErro = document.getElementById("mensagemErro");
+
+    // Verifica se o e-mail contém "@gmail.com"
+    if (!email.endsWith("@gmail.com")) {
+      // Previne o envio do formulário
+      event.preventDefault();
+
+      // Exibe a mensagem de erro
+      mensagemErro.style.display = "block";
+    } else {
+      // Oculta a mensagem de erro se o e-mail estiver correto
+      mensagemErro.style.display = "none";
+    }
+  });
