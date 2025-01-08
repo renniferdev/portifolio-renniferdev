@@ -1,6 +1,6 @@
 var typed = new Typed(".text", {
   strings: ["Desenvolvedor Full Stack"],
-  typeSpeed: 100,
+  typeSpeed: 50,
   backSpeed: 100,
   typeDeplay: 1000,
   loop: true,
