@@ -409,6 +409,15 @@ img {
 }
 
 /*==================== ABOUT ====================*/
+.about {
+    min-height: 100vh; /* Garantir que a altura mínima seja 100% da altura da tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+    padding: 2rem 0;
+}
+
 .about__img {
     width: 200px;
     border-radius: 0.5rem;
@@ -425,6 +434,7 @@ img {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: var(--mb-2-5);
+    flex-wrap: wrap;
 }
 
 .about__info-title {
@@ -446,140 +456,95 @@ img {
 .about__buttons {
     display: flex;
     justify-content: center;
+    gap: 1rem; /* Espaço entre os botões */
+    margin-top: 1.5rem;
 }
 
 /*==================== SKILLS ====================*/
-.skills__container {
-    row-gap: 0;
-}
 
-.skills__header {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--mb-2-5);
-    cursor: pointer;
-}
-
-.skills__icon,
-.skills__arrow {
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  header {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+  }
+  
+  .about {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  
+  .about h2 {
     font-size: 2rem;
-    color: var(--first-color);
+    margin-bottom: 1rem;
+  }
+  
+  .about p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .technologies {
+    padding: 5rem 0;
+    text-align: center;
+    background-color: #ffffff; /* Cor de fundo */
+    border: 5px solid #ffffff; /* Borda azul */
+    border-radius: 25px; /* Bordas arredondadas */
+    box-shadow: 0 5px 15px #00eeffb4; /* Sombra */
+  }
+
+  body.dark-theme .technologies {
+    background-color: #00eeffb4; /* Cor de fundo */
+    border: 5px solid #00eeffb4; /* Borda azul */
+    border-radius: 25px; /* Bordas arredondadas */
+    box-shadow: 0 5px 15px #00eeffb4; /* Sombra */
+  }
+  
+  .technologies h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem; /* Ajustei o margin-bottom para dar mais espaço ao redor do título */
+    padding-top: 1rem; /* Padding para dar mais espaço acima do título */
 }
 
-.skills__icon {
-    margin-right: var(--mb-0-75);
+.tech-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
 }
 
-.skills__title {
-    font-size: var(--h3-font-size);
+.tech {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
 }
 
-.skills__subtitle {
-    font-size: var(--small-font-size);
-    color: var(--text-color-light);
+.tech i {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
 
-.skills__arrow {
-    margin-left: auto;
-    transition: 0.4s;
+.tech span {
+  margin-top: 0.5rem;
 }
 
-.skills__list {
-    row-gap: 1.5rem;
-    padding-left: 2.7rem;
-}
-
-.skills__titles {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--mb-0-5);
-}
-
-.skills__name {
-    font-size: var(--normal-font-size);
-    font-weight: var(--font-medium);
-}
-
-.skills__bar,
-.skills__percentage {
-    height: 5px;
-    border-radius: 0.25rem;
-}
-
-.skills__bar {
-    background-color: var(--first-color-lighter);
-}
-
-.skills__percentage {
-    display: block;
-    background-color: var(--first-color);
-}
-
-.skills__html {
-    width: 100%;
-}
-
-.skills__css {
-    width: 100%;
-}
-
-.skills__js {
-    width: 100%;
-}
-
-.skills__typescript {
-    width: 100%;
-}
-
-.skills__react {
-    width: 80%;
-}
-
-.skills__python {
-    width: 80%;
-}
-
-.skills__nodejs {
-    width: 80%;
-}
-
-.skills__express {
-    width: 70%;
-}
-
-.skills__express {
-    width: 70%;
-}
-
-.skills__coreldraw {
-    width: 100%;
-}
-
-.skills__canva {
-    width: 90%;
-}
-
-.skills__photoshop {
-    width: 90%;
-}
-
-.skills__ilustrator {
-    width: 80%;
-}
-
-.skills__close .skills__list {
-    height: 0;
-    overflow: hidden;
-}
-
-.skills__open .skills__list {
-    height: max-content;
-    margin-bottom: var(--mb-2-5);
-}
-
-.skills__open .skills__arrow {
-    transform: rotate(-180deg);
-}
 
 /*==================== QUALIFICATION ====================*/
 .qualification__tabs {
