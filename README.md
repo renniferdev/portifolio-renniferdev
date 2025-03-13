@@ -3,6 +3,8 @@
 Este é um site de portfólio responsivo criado com HTML5, CSS3 e JavaScript. Ele apresenta um design moderno e interativo, adaptado para diversos dispositivos, garantindo uma experiência imersiva e funcional.
 
 🚀 Demonstração
+![image](https://github.com/user-attachments/assets/8963f120-e3fd-4c23-ad15-7f3950561204)
+
 🌐 Veja o Portfólio Online
 
 📑 Sobre o Projeto
