@@ -127,20 +127,26 @@ function scrollActive() {
   sections.forEach((current) => {
     const sectionHeight = current.offsetHeight;
     const sectionTop = current.offsetTop - 50;
-    sectionId = current.getAttribute("id");
+    const sectionId = current.getAttribute("id");
 
     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
-    } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
+      // Remove active-link de todos os links
+      document.querySelectorAll(".nav__menu a").forEach((link) => {
+        link.classList.remove("active-link");
+      });
+      // Adiciona active-link apenas ao link da seção atual
+      const activeLink = document.querySelector(".nav__menu a[href*='" + sectionId + "']");
+      if (activeLink) {
+        activeLink.classList.add("active-link");
+      }
     }
   });
 }
+
 window.addEventListener("scroll", scrollActive);
+
+// Chamar scrollActive ao carregar a página
+document.addEventListener("DOMContentLoaded", scrollActive);
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/
 function scrollHeader() {
