@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('home');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -9,6 +10,31 @@ function Header() {
 
   const toggleTheme = () => {
     document.body.classList.toggle('dark-theme');
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section[id]');
+      const scrollY = window.pageYOffset;
+
+      sections.forEach((current) => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 50;
+        const sectionId = current.getAttribute('id');
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          setActiveLink(sectionId);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleLinkClick = (sectionId) => {
+    setActiveLink(sectionId);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -21,30 +47,50 @@ function Header() {
         <div className={`nav__menu ${isMenuOpen ? 'show-menu' : ''}`} id="nav-menu">
           <ul className="nav__list grid">
             <li className="nav__item">
-              <a href="#home" className="nav__link active-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="uil uil-estate nav__icon"></i> Página inicial
+              <a 
+                href="#home" 
+                className={`nav__link ${activeLink === 'home' ? 'active-link' : ''}`}
+                onClick={() => handleLinkClick('home')}
+              >
+                <i className="uil uil-home nav__icon"></i> Página inicial
               </a>
             </li>
             <li className="nav__item">
-              <a href="#about" className="nav__link" onClick={() => setIsMenuOpen(false)}>
-                <i className="uil nav__icon uil-user"></i> Sobre
+              <a 
+                href="#about" 
+                className={`nav__link ${activeLink === 'about' ? 'active-link' : ''}`}
+                onClick={() => handleLinkClick('about')}
+              >
+                <i className="uil uil-user nav__icon"></i> Sobre
               </a>
             </li>
 
             <li className="nav__item">
-              <a href="#softskills" className="nav__link" onClick={() => setIsMenuOpen(false)}>
-                <i className="uil nav__icon uil-user"></i> Soft skills
+              <a 
+                href="#softskills" 
+                className={`nav__link ${activeLink === 'softskills' ? 'active-link' : ''}`}
+                onClick={() => handleLinkClick('softskills')}
+              >
+                <i className="uil uil-briefcase nav__icon"></i> Soft skills
               </a>
             </li>
 
             <li className="nav__item">
-              <a href="#portfolio" className="nav__link" onClick={() => setIsMenuOpen(false)}>
-                <i className="uil nav__icon uil-scenery"></i> Meus Projetos
+              <a 
+                href="#portfolio" 
+                className={`nav__link ${activeLink === 'portfolio' ? 'active-link' : ''}`}
+                onClick={() => handleLinkClick('portfolio')}
+              >
+                <i className="uil uil-image nav__icon"></i> Meus Projetos
               </a>
             </li>
             <li className="nav__item">
-              <a href="#contact" className="nav__link" onClick={() => setIsMenuOpen(false)}>
-                <i className="uil nav__icon uil-message"></i> Fale comigo
+              <a 
+                href="#contact" 
+                className={`nav__link ${activeLink === 'contact' ? 'active-link' : ''}`}
+                onClick={() => handleLinkClick('contact')}
+              >
+                <i className="uil uil-envelope nav__icon"></i> Fale comigo
               </a>
             </li>
           </ul>
