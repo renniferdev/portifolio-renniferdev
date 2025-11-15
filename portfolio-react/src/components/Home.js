@@ -3,7 +3,7 @@ import Typed from 'typed.js';
 
 function Home() {
   useEffect(() => {
-    const typed = new Typed('.text', {
+    const typed = new Typed('.home__typed-text', {
       strings: ['Desenvolvedor Full Stack'],
       typeSpeed: 50,
       backSpeed: 100,
@@ -14,63 +14,85 @@ function Home() {
     return () => typed.destroy();
   }, []);
 
+  const technologies = [
+    'React.js',
+    'Node.js',
+    'JavaScript',
+    'TypeScript',
+    'HTML5',
+    'CSS3',
+  ];
+
   return (
     <section className="home section" id="home">
-      <div className="home__container container grid">
-        <div className="home__content grid">
+      <div className="home__container container">
+        <div className="home__content">
+          {/* Foto de Perfil com Efeito Moderno */}
+          <div className="home__profile-wrapper">
+            <div className="home__profile-glow"></div>
+            <div className="home__profile-border"></div>
+            <img 
+              src="/img/rennifer.jpg" 
+              alt="Rennifer - Desenvolvedor Full Stack" 
+              className="home__profile-img" 
+            />
+          </div>
+
+          {/* Conteúdo Principal */}
+          <div className="home__data">
+            <h1 className="home__title">
+              Olá, meu nome é <span className="home__title-highlight">Rennifer</span>!
+            </h1>
+            <h2 className="home__subtitle">
+              Eu sou <span className="home__typed-text"></span>
+            </h2>
+            
+            {/* Tecnologias em Chips */}
+            <div className="home__technologies">
+              {technologies.map((tech, index) => (
+                <span key={index} className="home__tech-chip">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Botão CTA */}
+            <a href="#contact" className="home__cta-button">
+              <span>Entre em Contato</span>
+              <i className="uil uil-message home__cta-icon"></i>
+            </a>
+          </div>
+
+          {/* Ícones Sociais - Horizontalmente Alinhados */}
           <div className="home__social">
             <a
               href="https://www.linkedin.com/in/rennifer-amilton-teixeira-08983219a/"
               target="_blank"
               rel="noopener noreferrer"
-              className="home__social-icon"
+              className="home__social-link home__social-link--linkedin"
+              aria-label="LinkedIn"
             >
               <i className="uil uil-linkedin-alt"></i>
             </a>
             <a
-              href="https://www.tiktok.com/@futurodevrennifer?is_from_webapp=1&sender_device=pc"
+              href="https://wa.me/5531984163357"
               target="_blank"
               rel="noopener noreferrer"
-              className="home__social-icon"
+              className="home__social-link home__social-link--whatsapp"
+              aria-label="WhatsApp"
             >
-              <i className="fab fa-tiktok"></i>
+              <i className="uil uil-whatsapp"></i>
             </a>
             <a
               href="https://github.com/renniferdev"
               target="_blank"
               rel="noopener noreferrer"
-              className="home__social-icon"
+              className="home__social-link home__social-link--github"
+              aria-label="GitHub"
             >
               <i className="uil uil-github-alt"></i>
             </a>
           </div>
-
-          <div className="home__img-container">
-            <div className="home__img-wrapper">
-              <div className="home__img-glow"></div>
-              <img src="/img/rennifer.jpg" alt="Rennifer" className="home__img-profile" />
-            </div>
-          </div>
-
-          <div className="home__data">
-            <h1 className="home__title">Olá, meu nome é Rennifer!</h1>
-            <h3 className="home__subtitle">
-              Eu sou <span className="text"></span>
-            </h3>
-            <p className="home__description">
-              Desenvolvedor Full Stack | React.js | Node.js | JavaScript | Em Transição de Carreira para TI
-            </p>
-            <a href="#contact" className="button button--flex">
-              Entre em Contato <i className="uil uil-message button__icon"></i>
-            </a>
-          </div>
-        </div>
-
-        <div className="home__scroll">
-          <a href="#about" className="home__scroll-button button--flex">
-            <i className="uil uil-mouse-alt home__scroll-mouse"></i>
-            <i className="uil uil-arrow-down home__scroll-arrow"></i>
-          </a>
         </div>
       </div>
     </section>
