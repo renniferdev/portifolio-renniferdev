@@ -10,7 +10,7 @@ function Contact() {
         <div>
           <div className="contact__information">
             <a
-              href="https://wa.me/5513984163357"
+              href="https://wa.me/5531984163357"
               className="whatsapp-icon"
               target="_blank"
               rel="noopener noreferrer"
