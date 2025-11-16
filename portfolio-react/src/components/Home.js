@@ -8,19 +8,36 @@ function Home() {
       typeSpeed: 50,
       backSpeed: 100,
       typeDelay: 1000,
+      backDelay: 5000,
       loop: true,
     });
 
     return () => typed.destroy();
   }, []);
 
+  const handleDownloadCV = () => {
+    const cvPath = '/img/Rennifer-Teixeira-Curriculo-Desenvolvedor-Full Stack.pdf';
+    
+    // Abre em uma nova página
+    window.open(cvPath, '_blank');
+    
+    // Faz o download
+    const link = document.createElement('a');
+    link.href = cvPath;
+    link.download = 'Rennifer-Teixeira-Curriculo-Desenvolvedor-Full Stack.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const technologies = [
     'React.js',
     'Node.js',
     'JavaScript',
     'TypeScript',
-    'HTML5',
-    'CSS3',
+    'PostgreSQL',
+    'Docker',
+    'AWS',
   ];
 
   return (
@@ -57,10 +74,10 @@ function Home() {
             </div>
 
             {/* Botão CTA */}
-            <a href="#contact" className="home__cta-button">
-              <span>Entre em Contato</span>
-              <i className="uil uil-message home__cta-icon"></i>
-            </a>
+            <button onClick={handleDownloadCV} className="home__cta-button">
+              <span>Baixar CV</span>
+              <i className="uil uil-download-alt home__cta-icon"></i>
+            </button>
           </div>
 
           {/* Ícones Sociais - Horizontalmente Alinhados */}
