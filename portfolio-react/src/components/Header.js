@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
+  const menuRef = useRef(null);
+  const toggleButtonRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   const toggleTheme = () => {
@@ -32,6 +38,29 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Verifica se o clique foi fora do menu e do botão de toggle
+      if (
+        menuRef.current &&
+        toggleButtonRef.current &&
+        !menuRef.current.contains(event.target) &&
+        !toggleButtonRef.current.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    };
+
+    // Adiciona o listener apenas quando o menu está aberto
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   const handleLinkClick = (sectionId) => {
     setActiveLink(sectionId);
     setIsMenuOpen(false);
@@ -44,7 +73,11 @@ function Header() {
           &lt;/Rennifer&gt;
         </a>
 
-        <div className={`nav__menu ${isMenuOpen ? 'show-menu' : ''}`} id="nav-menu">
+        <div 
+          ref={menuRef}
+          className={`nav__menu ${isMenuOpen ? 'show-menu' : ''}`} 
+          id="nav-menu"
+        >
           <ul className="nav__list grid">
             <li className="nav__item">
               <a 
@@ -100,7 +133,12 @@ function Header() {
         <div className="nav__btns">
           <i className="uil uil-moon change-theme" id="theme-button" onClick={toggleTheme}></i>
 
-          <div className="nav__toggle" id="nav-toggle" onClick={toggleMenu}>
+          <div 
+            ref={toggleButtonRef}
+            className="nav__toggle" 
+            id="nav-toggle" 
+            onClick={toggleMenu}
+          >
             <i className="uil uil-apps"></i>
           </div>
         </div>
