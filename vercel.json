@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
-  "framework": "create-react-app",
-  "rootDirectory": "portfolio-react"
+  "installCommand": "cd portfolio-react && npm install",
+  "buildCommand": "cd portfolio-react && npm run build",
+  "outputDirectory": "portfolio-react/build",
+  "framework": "create-react-app"
 }
