@@ -5,11 +5,11 @@ function Skills() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const intervalRef = useRef(null);
 
-  // Agrupar categorias em Front-end, Back-end e Outros
+  // Agrupar categorias em Front-end, Back-end, DevOps & Tools e Ferramentas e Linguagens
   const groupedCategories = [
     {
       name: 'Front-end',
-      icon: 'uil uil-brackets-curly',
+      icon: 'uil uil-monitor',
       color: '#7c3aed',
       technologies: [
         { name: 'JavaScript', icon: 'devicon-javascript-plain colored' },
@@ -29,7 +29,6 @@ function Skills() {
       technologies: [
         { name: 'Node.js', icon: 'devicon-nodejs-plain colored' },
         { name: 'Express', icon: 'devicon-express-original colored' },
-        { name: 'Python', icon: 'devicon-python-plain colored' },
         { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
         { name: 'MySQL', icon: 'devicon-mysql-plain colored' },
         { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
@@ -45,10 +44,16 @@ function Skills() {
         { name: 'Vercel', icon: 'devicon-vercel-original colored' },
         { name: 'Git', icon: 'devicon-git-plain colored' },
         { name: 'GitHub', icon: 'devicon-github-original colored' },
-        { name: 'React Native', icon: 'devicon-react-original colored' },
-        { name: 'Webpack', icon: 'devicon-webpack-plain colored' },
-        { name: 'Babel', icon: 'devicon-babel-plain colored' },
         { name: 'Figma', icon: 'devicon-figma-plain colored' },
+      ]
+    },
+    {
+      name: 'Ferramentas e Linguagens',
+      icon: 'uil uil-wrench',
+      color: '#f59e0b',
+      technologies: [
+        { name: 'Python', icon: 'devicon-python-plain colored' },
+        { name: 'React Native', icon: 'devicon-react-original colored' },
       ]
     }
   ];
