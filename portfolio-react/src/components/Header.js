@@ -5,6 +5,7 @@ function Header() {
   const [activeLink, setActiveLink] = useState('home');
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  const isScrollingRef = useRef(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,19 +21,61 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
+      // Ignora a detecção se estiver fazendo scroll programático
+      if (isScrollingRef.current) {
+        return;
+      }
+
+      const sections = document.querySelectorAll('section[id], div[id]');
       const scrollY = window.pageYOffset;
+      const headerHeight = 72; // Altura do header em pixels
+      const offset = headerHeight + 50;
+
+      let currentSection = '';
+      let maxTop = -Infinity;
 
       sections.forEach((current) => {
+        const sectionTop = current.offsetTop;
         const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 50;
         const sectionId = current.getAttribute('id');
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          setActiveLink(sectionId);
+        // Verifica se a seção está visível na viewport
+        if (scrollY + offset >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          // Se múltiplas seções estão visíveis, escolhe a que está mais próxima do topo
+          if (sectionTop > maxTop) {
+            maxTop = sectionTop;
+            currentSection = sectionId;
+          }
         }
       });
+
+      // Se não encontrou nenhuma seção visível, procura a mais próxima
+      if (!currentSection) {
+        let closestSection = '';
+        let minDistance = Infinity;
+
+        sections.forEach((current) => {
+          const sectionTop = current.offsetTop;
+          const distance = Math.abs(scrollY + offset - sectionTop);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestSection = current.getAttribute('id');
+          }
+        });
+
+        if (closestSection) {
+          currentSection = closestSection;
+        }
+      }
+
+      if (currentSection) {
+        setActiveLink(currentSection);
+      }
     };
+
+    // Chama uma vez ao montar para definir o estado inicial
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -61,9 +104,33 @@ function Header() {
     };
   }, [isMenuOpen]);
 
-  const handleLinkClick = (sectionId) => {
+  const handleLinkClick = (sectionId, e) => {
+    e.preventDefault();
     setActiveLink(sectionId);
     setIsMenuOpen(false);
+    
+    // Marca que está fazendo scroll programático
+    isScrollingRef.current = true;
+    
+    // Scroll suave para a seção
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 72;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      // Permite detecção de scroll novamente após o scroll terminar
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 1000);
+    } else {
+      isScrollingRef.current = false;
+    }
   };
 
   return (
@@ -83,7 +150,7 @@ function Header() {
               <a 
                 href="#home" 
                 className={`nav__link ${activeLink === 'home' ? 'active-link' : ''}`}
-                onClick={() => handleLinkClick('home')}
+                onClick={(e) => handleLinkClick('home', e)}
               >
                 <i className="uil uil-home nav__icon"></i> Página inicial
               </a>
@@ -92,7 +159,7 @@ function Header() {
               <a 
                 href="#about" 
                 className={`nav__link ${activeLink === 'about' ? 'active-link' : ''}`}
-                onClick={() => handleLinkClick('about')}
+                onClick={(e) => handleLinkClick('about', e)}
               >
                 <i className="uil uil-user nav__icon"></i> Sobre
               </a>
@@ -102,7 +169,7 @@ function Header() {
               <a 
                 href="#softskills" 
                 className={`nav__link ${activeLink === 'softskills' ? 'active-link' : ''}`}
-                onClick={() => handleLinkClick('softskills')}
+                onClick={(e) => handleLinkClick('softskills', e)}
               >
                 <i className="uil uil-briefcase nav__icon"></i> Soft skills
               </a>
@@ -112,7 +179,7 @@ function Header() {
               <a 
                 href="#portfolio" 
                 className={`nav__link ${activeLink === 'portfolio' ? 'active-link' : ''}`}
-                onClick={() => handleLinkClick('portfolio')}
+                onClick={(e) => handleLinkClick('portfolio', e)}
               >
                 <i className="uil uil-image nav__icon"></i> Meus Projetos
               </a>
@@ -121,7 +188,7 @@ function Header() {
               <a 
                 href="#contact" 
                 className={`nav__link ${activeLink === 'contact' ? 'active-link' : ''}`}
-                onClick={() => handleLinkClick('contact')}
+                onClick={(e) => handleLinkClick('contact', e)}
               >
                 <i className="uil uil-envelope nav__icon"></i> Fale comigo
               </a>
