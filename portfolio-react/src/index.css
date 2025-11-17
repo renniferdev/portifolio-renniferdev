@@ -85,6 +85,7 @@ body.dark-theme {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -122,6 +123,7 @@ img {
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section {
   padding: 2rem 1rem 4rem;
+  scroll-margin-top: var(--header-height);
 }
 
 .section__title {
@@ -806,18 +808,18 @@ body.dark-theme .home__social-link--github:hover {
 
 /*==================== TECHNOLOGIES ====================*/
 .technologies {
-  padding: 5rem 1rem;
+  padding: 1rem 1rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
   scroll-margin-top: var(--header-height);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .technologies__title {
   font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: var(--font-semi-bold);
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 0.75rem;
   color: var(--title-color);
   position: relative;
   display: inline-block;
@@ -840,17 +842,17 @@ body.dark-theme .home__social-link--github:hover {
 .tech-carousel-wrapper {
   position: relative;
   max-width: 900px;
-  margin: 3rem auto 0;
-  padding: 2rem 1rem;
+  margin: 0 auto;
+  padding: 2rem 5rem;
   perspective: 1200px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .tech-carousel-container {
   position: relative;
   width: 100%;
-  height: 600px;
-  min-height: 500px;
+  height: 700px;
+  min-height: 600px;
   perspective: 1200px;
   overflow: hidden;
 }
@@ -941,20 +943,19 @@ body.dark-theme .tech-carousel-slide.active .tech-carousel-slide__content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid rgba(124, 58, 237, 0.1);
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0;
   text-align: center;
 }
 
 .tech-carousel-slide__icon-wrapper {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, 
-    rgba(124, 58, 237, 0.1) 0%, 
-    rgba(124, 58, 237, 0.05) 100%);
+    rgba(124, 58, 237, 0.08) 0%, 
+    rgba(124, 58, 237, 0.03) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -964,14 +965,14 @@ body.dark-theme .tech-carousel-slide.active .tech-carousel-slide__content {
 
 .tech-carousel-slide.active .tech-carousel-slide__icon-wrapper {
   background: linear-gradient(135deg, 
-    var(--category-color, var(--first-color))15%, 
-    rgba(124, 58, 237, 0.1) 100%);
+    rgba(124, 58, 237, 0.12) 0%, 
+    rgba(124, 58, 237, 0.05) 100%);
   transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
 }
 
 .tech-carousel-slide__icon-wrapper i {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: var(--category-color, var(--first-color));
   transition: all 0.4s ease;
 }
@@ -981,7 +982,7 @@ body.dark-theme .tech-carousel-slide.active .tech-carousel-slide__content {
 }
 
 .tech-carousel-slide__title {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-weight: var(--font-semi-bold);
   color: var(--title-color);
   margin: 0;
@@ -1153,11 +1154,11 @@ body.dark-theme .tech-carousel-item:hover {
 }
 
 .tech-carousel-nav--prev {
-  left: -24px;
+  left: 1rem;
 }
 
 .tech-carousel-nav--next {
-  right: -24px;
+  right: 1rem;
 }
 
 body.dark-theme .tech-carousel-nav {
@@ -1256,6 +1257,7 @@ body.dark-theme .tech-carousel-dot.active {
 @media screen and (max-width: 479px) {
   .technologies {
     padding: 3rem 0.5rem;
+    overflow: visible;
   }
 
   .technologies__title {
@@ -1264,41 +1266,41 @@ body.dark-theme .tech-carousel-dot.active {
   }
 
   .tech-carousel-wrapper {
-    padding: 0.5rem 0.25rem;
+    padding: 2rem 2.5rem;
     max-width: 100%;
   }
 
   .tech-carousel-container {
     height: auto;
-    min-height: 500px;
-    max-height: 800px;
+    min-height: 600px;
+    max-height: 900px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   .tech-carousel-slide__content {
-    padding: 1.5rem 1rem;
-    min-height: 500px;
+    padding: 1rem 1rem;
+    min-height: 600px;
     overflow-y: visible;
   }
 
   .tech-carousel-slide__header {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    gap: 1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0;
+    gap: 0.75rem;
   }
 
   .tech-carousel-slide__icon-wrapper {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   .tech-carousel-slide__icon-wrapper i {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .tech-carousel-slide__title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   .tech-carousel-slide__grid {
@@ -1341,11 +1343,11 @@ body.dark-theme .tech-carousel-dot.active {
   }
 
   .tech-carousel-nav--prev {
-    left: 0.25rem;
+    left: 0.5rem;
   }
 
   .tech-carousel-nav--next {
-    right: 0.25rem;
+    right: 0.5rem;
   }
 
   .tech-carousel-dots {
@@ -1377,20 +1379,20 @@ body.dark-theme .tech-carousel-dot.active {
 /* Small Devices (480px - 567px) */
 @media screen and (min-width: 480px) and (max-width: 567px) {
   .tech-carousel-wrapper {
-    padding: 1rem 0.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .tech-carousel-container {
     height: auto;
-    min-height: 520px;
-    max-height: 720px;
+    min-height: 580px;
+    max-height: 800px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   .tech-carousel-slide__content {
     padding: 2rem 1.25rem;
-    min-height: 520px;
+    min-height: 580px;
   }
 
   .tech-carousel-slide__grid {
@@ -1430,11 +1432,11 @@ body.dark-theme .tech-carousel-dot.active {
   }
 
   .tech-carousel-nav--prev {
-    left: 0.5rem;
+    left: 1rem;
   }
 
   .tech-carousel-nav--next {
-    right: 0.5rem;
+    right: 1rem;
   }
 
   .tech-carousel-progress {
@@ -1445,20 +1447,20 @@ body.dark-theme .tech-carousel-dot.active {
 /* Medium Devices (568px - 767px) */
 @media screen and (min-width: 568px) and (max-width: 767px) {
   .tech-carousel-wrapper {
-    padding: 1.5rem 1rem;
+    padding: 2rem 3rem;
   }
 
   .tech-carousel-container {
     height: auto;
-    min-height: 540px;
-    max-height: 750px;
+    min-height: 620px;
+    max-height: 850px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   .tech-carousel-slide__content {
     padding: 2.5rem 1.5rem;
-    min-height: 540px;
+    min-height: 620px;
   }
 
   .tech-carousel-slide__grid {
@@ -1492,6 +1494,14 @@ body.dark-theme .tech-carousel-dot.active {
     height: 44px;
   }
 
+  .tech-carousel-nav--prev {
+    left: 1rem;
+  }
+
+  .tech-carousel-nav--next {
+    right: 1rem;
+  }
+
   .tech-carousel-progress {
     width: 160px;
   }
@@ -1500,19 +1510,19 @@ body.dark-theme .tech-carousel-dot.active {
 /* Tablets (768px - 991px) */
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .tech-carousel-wrapper {
-    padding: 2rem 1rem;
+    padding: 2rem 3.5rem;
     max-width: 850px;
   }
 
   .tech-carousel-container {
     height: auto;
-    min-height: 580px;
-    max-height: 800px;
+    min-height: 650px;
+    max-height: 900px;
   }
 
   .tech-carousel-slide__content {
     padding: 2.5rem 2rem;
-    min-height: 580px;
+    min-height: 650px;
   }
 
   .tech-carousel-slide__grid {
@@ -1544,11 +1554,11 @@ body.dark-theme .tech-carousel-dot.active {
   }
 
   .tech-carousel-nav--prev {
-    left: -23px;
+    left: 1rem;
   }
 
   .tech-carousel-nav--next {
-    right: -23px;
+    right: 1rem;
   }
 
   .tech-carousel-progress {
@@ -1560,13 +1570,13 @@ body.dark-theme .tech-carousel-dot.active {
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .tech-carousel-container {
     height: auto;
-    min-height: 620px;
-    max-height: 850px;
+    min-height: 700px;
+    max-height: 950px;
   }
 
   .tech-carousel-slide__content {
     padding: 3rem 2rem;
-    min-height: 620px;
+    min-height: 700px;
   }
 
   .tech-carousel-slide__grid {
@@ -1587,21 +1597,41 @@ body.dark-theme .tech-carousel-dot.active {
     width: 2.75rem;
     height: 2.75rem;
   }
+
+  .tech-carousel-nav--prev {
+    left: 1rem;
+  }
+
+  .tech-carousel-nav--next {
+    right: 1rem;
+  }
 }
 
 /* Extra Large Devices (1200px+) */
 @media screen and (min-width: 1200px) {
   .tech-carousel-container {
-    height: 650px;
+    height: 750px;
     overflow: visible;
   }
 
   .tech-carousel-slide__content {
-    min-height: 650px;
+    min-height: 750px;
   }
 
   .tech-carousel-slide__grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .tech-carousel-nav--prev {
+    left: 0.5rem;
+  }
+
+  .tech-carousel-nav--next {
+    right: 0.5rem;
+  }
+
+  .tech-carousel-wrapper {
+    padding: 2rem 4rem;
   }
 }
 
@@ -1910,6 +1940,10 @@ body.dark-theme .tech-carousel-dot.active {
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
   }
+
+  .tech-carousel-wrapper {
+    padding: 2rem 2.5rem;
+  }
 }
 
 /* Small devices (320px - 567px) */
@@ -1984,6 +2018,10 @@ body.dark-theme .tech-carousel-dot.active {
 
   .footer__container {
     grid-template-columns: 1fr;
+  }
+
+  .tech-carousel-wrapper {
+    padding: 2rem 2.5rem;
   }
 }
 
@@ -2139,6 +2177,18 @@ body.dark-theme .tech-carousel-dot.active {
 
   .footer__container {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .tech-carousel-wrapper {
+    padding: 2rem 6rem;
+  }
+
+  .tech-carousel-nav--prev {
+    left: -10px;
+  }
+
+  .tech-carousel-nav--next {
+    right: -10px;
   }
 }
 
