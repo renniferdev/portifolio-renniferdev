@@ -91,7 +91,6 @@ function Contact() {
               required
               className="contact__input"
             ></textarea>
-            <input type="text" name="message" className="contact__input" />
           </div>
 
           <div>
