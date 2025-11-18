@@ -1,5 +1,6 @@
 {
+  "root": "portfolio-react",
   "buildCommand": "npm run build",
-  "outputDirectory": "portfolio-react/build",
-  "framework": null
+  "outputDirectory": "build",
+  "framework": "react"
 }
