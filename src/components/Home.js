@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Typed from 'typed.js';
+import CVModal from './CVModal';
 
 function Home() {
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+
   useEffect(() => {
     const typed = new Typed('.home__typed-text', {
       strings: ['Desenvolvedor Full Stack'],
@@ -15,19 +18,8 @@ function Home() {
     return () => typed.destroy();
   }, []);
 
-  const handleDownloadCV = () => {
-    const cvPath = '/img/Rennifer-Teixeira-Curriculo-Desenvolvedor-Full Stack.pdf';
-    
-    // Abre em uma nova página
-    window.open(cvPath, '_blank');
-    
-    // Faz o download
-    const link = document.createElement('a');
-    link.href = cvPath;
-    link.download = 'Rennifer-Teixeira-Curriculo-Desenvolvedor-Full Stack.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleViewCV = () => {
+    setIsCVModalOpen(true);
   };
 
   const technologies = [
@@ -74,10 +66,13 @@ function Home() {
             </div>
 
             {/* Botão CTA */}
-            <button onClick={handleDownloadCV} className="home__cta-button">
-              <span>Baixar CV</span>
-              <i className="uil uil-download-alt home__cta-icon"></i>
+            <button onClick={handleViewCV} className="home__cta-button">
+              <span>Visualizar CV</span>
+              <i className="uil uil-file-pdf home__cta-icon"></i>
             </button>
+
+            {/* Modal do CV */}
+            <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
           </div>
 
           {/* Ícones Sociais - Horizontalmente Alinhados */}
