@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from './Modal';
 
 function Portfolio() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const projects = [
     {
       id: 1,
+      title: 'Allcanci - Gestão Escolar',
+      description:
+        'Primeiro lançamento oficial do aplicativo Fill! Agora você pode acompanhar suas máquinas, visualizar recargas e consultar relatórios de forma rápida e simples. Allcanci é um aplicativo desenvolvido para facilitar a gestão escolar, oferecendo acesso rápido e seguro a informações essenciais para escolas e usuários autorizados. Principais funcionalidades: Monitoramento em tempo real das máquinas Fill • Relatórios de consumo e desempenho',
+      image: '/img/allcanci.PNG',
+      link: '#',
+      modalImages: ['/img/MODAL1allcanci.PNG', '/img/MODALallcanci2.PNG'],
+    },
+    {
+      id: 2,
       title: 'Fabric & Tales - E-commerce',
       description:
         'Fabric & Tales é um e-commerce moderno desenvolvido com React.js, oferecendo uma experiência de compra fluida e intuitiva. O site apresenta categorias para homens, mulheres e crianças, além de coleções exclusivas e ofertas especiais.',
@@ -11,7 +24,7 @@ function Portfolio() {
       link: 'https://e-commerce-fabric-e-tales.vercel.app/',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Desafio de Programação: Teste seus conhecimentos!',
       description:
         'Participe deste quiz interativo desenvolvido em JavaScript, onde você pode testar e aprimorar seu conhecimento em HTML, CSS e JavaScript. Desafie-se com perguntas divertidas e aprenda mais sobre essas tecnologias essenciais para o desenvolvimento web.',
@@ -19,7 +32,7 @@ function Portfolio() {
       link: 'https://quiz-react-kohl-one.vercel.app/',
     },
     {
-      id: 3,
+      id: 4,
       title: 'Barbearia Campelo - Website',
       description:
         'Este é o site da Barbearia Campelo, desenvolvido para promover os serviços de cortes de cabelo, barba e cuidados masculinos. O site combina um design moderno com funcionalidade de agendamento online.',
@@ -27,7 +40,7 @@ function Portfolio() {
       link: 'https://barbearia-campelo.vercel.app/',
     },
     {
-      id: 4,
+      id: 5,
       title: 'Buscador de Cep',
       description:
         'O BuscaCEP é uma ferramenta simples e rápida para localizar o endereço completo ao inserir um CEP.',
@@ -50,15 +63,28 @@ function Portfolio() {
               <div className="portfolio__data">
                 <h3 className="portfolio__title">{project.title}</h3>
                 <p className="portfolio__description">{project.description}</p>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button button--flex button--small portfolio__button"
-                >
-                  Demonstração
-                  <i className="uil uil-arrow-right button__icon"></i>
-                </a>
+                {project.modalImages ? (
+                  <button
+                    onClick={() => {
+                      setSelectedProject(project);
+                      setIsModalOpen(true);
+                    }}
+                    className="button button--flex button--small portfolio__button"
+                  >
+                    Demonstração
+                    <i className="uil uil-arrow-right button__icon"></i>
+                  </button>
+                ) : (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button button--flex button--small portfolio__button"
+                  >
+                    Demonstração
+                    <i className="uil uil-arrow-right button__icon"></i>
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -66,6 +92,15 @@ function Portfolio() {
 
         <div className="swiper-pagination"></div>
       </div>
+
+      {selectedProject && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title={selectedProject.title}
+          images={selectedProject.modalImages}
+        />
+      )}
     </section>
   );
 }

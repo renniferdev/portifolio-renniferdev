@@ -1692,8 +1692,9 @@ body.dark-theme .tech-carousel-dot.active {
 
 .portfolio__img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
   border-radius: 0.5rem;
 }
 
