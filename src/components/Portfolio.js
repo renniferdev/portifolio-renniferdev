@@ -58,33 +58,33 @@ function Portfolio() {
         <div className="test">
           {projects.map((project) => (
             <div key={project.id} className="portfolio__content grid">
+              {project.modalImages ? (
+                <button
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setIsModalOpen(true);
+                  }}
+                  className="button button--flex button--small portfolio__button"
+                >
+                  Demonstração
+                  <i className="uil uil-arrow-right button__icon"></i>
+                </button>
+              ) : (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button button--flex button--small portfolio__button"
+                >
+                  Demonstração
+                  <i className="uil uil-arrow-right button__icon"></i>
+                </a>
+              )}
               <img src={project.image} alt={project.title} className="portfolio__img" />
 
               <div className="portfolio__data">
                 <h3 className="portfolio__title">{project.title}</h3>
                 <p className="portfolio__description">{project.description}</p>
-                {project.modalImages ? (
-                  <button
-                    onClick={() => {
-                      setSelectedProject(project);
-                      setIsModalOpen(true);
-                    }}
-                    className="button button--flex button--small portfolio__button"
-                  >
-                    Demonstração
-                    <i className="uil uil-arrow-right button__icon"></i>
-                  </button>
-                ) : (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="button button--flex button--small portfolio__button"
-                  >
-                    Demonstração
-                    <i className="uil uil-arrow-right button__icon"></i>
-                  </a>
-                )}
               </div>
             </div>
           ))}

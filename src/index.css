@@ -1683,6 +1683,7 @@ body.dark-theme .tech-carousel-dot.active {
   flex-direction: column;
   gap: 1rem;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .portfolio__content:hover {
@@ -1710,7 +1711,16 @@ body.dark-theme .tech-carousel-dot.active {
 }
 
 .portfolio__button {
-  align-self: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  margin: 0;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0;
+  padding: 0.75rem 1rem;
 }
 
 /*==================== CONTACT ====================*/

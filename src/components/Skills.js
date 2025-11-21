@@ -32,6 +32,7 @@ function Skills() {
         { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
         { name: 'MySQL', icon: 'devicon-mysql-plain colored' },
         { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
+        { name: 'Prisma ORM', icon: 'devicon-prisma-original colored' },
       ]
     },
     {
