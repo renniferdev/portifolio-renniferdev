@@ -4,6 +4,28 @@ import Modal from './Modal';
 function Portfolio() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [expandedProjects, setExpandedProjects] = useState({});
+
+  const MAX_DESCRIPTION_LENGTH = 250;
+
+  const toggleDescription = (projectId) => {
+    setExpandedProjects((prev) => ({
+      ...prev,
+      [projectId]: !prev[projectId],
+    }));
+  };
+
+  const truncateDescription = (description, projectId) => {
+    if (description.length <= MAX_DESCRIPTION_LENGTH) {
+      return description;
+    }
+
+    if (expandedProjects[projectId]) {
+      return description;
+    }
+
+    return description.substring(0, MAX_DESCRIPTION_LENGTH);
+  };
 
   const projects = [
     {
@@ -84,7 +106,27 @@ function Portfolio() {
 
               <div className="portfolio__data">
                 <h3 className="portfolio__title">{project.title}</h3>
-                <p className="portfolio__description">{project.description}</p>
+                <div className="portfolio__description-wrapper">
+                  <p className="portfolio__description">
+                    {truncateDescription(project.description, project.id)}
+                  </p>
+                  {project.description.length > MAX_DESCRIPTION_LENGTH && !expandedProjects[project.id] && (
+                    <button
+                      onClick={() => toggleDescription(project.id)}
+                      className="portfolio__toggle-btn"
+                    >
+                      Ver mais
+                    </button>
+                  )}
+                </div>
+                {project.description.length > MAX_DESCRIPTION_LENGTH && expandedProjects[project.id] && (
+                  <button
+                    onClick={() => toggleDescription(project.id)}
+                    className="portfolio__toggle-btn portfolio__toggle-btn--less"
+                  >
+                    Ver menos
+                  </button>
+                )}
               </div>
             </div>
           ))}
