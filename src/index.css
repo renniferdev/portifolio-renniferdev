@@ -728,7 +728,7 @@ body.dark-theme .home__social-link--github:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: green;
+  background-color: var(--first-color);
   color: #fff;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
@@ -739,14 +739,14 @@ body.dark-theme .home__social-link--github:hover {
 }
 
 .button:hover {
-  background-color: rgba(0, 128, 0, 0.9);
+  background-color: var(--first-color-alt);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
 }
 
 .button--small {
-  padding: 0.75rem 1rem;
-  font-size: var(--small-font-size);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
 }
 
 .button--link {
@@ -1693,9 +1693,8 @@ body.dark-theme .tech-carousel-dot.active {
 
 .portfolio__img {
   width: 100%;
-  height: auto;
-  max-height: 300px;
-  object-fit: contain;
+  height: 250px;
+  object-fit: cover;
   border-radius: 0.5rem;
 }
 
@@ -1704,10 +1703,53 @@ body.dark-theme .tech-carousel-dot.active {
   font-weight: var(--font-semi-bold);
 }
 
+.portfolio__description-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0;
+}
+
 .portfolio__description {
   font-size: var(--small-font-size);
   color: var(--text-color-light);
   line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 0;
+  display: inline;
+}
+
+.portfolio__description::after {
+  content: '...';
+}
+
+.portfolio__toggle-btn {
+  background: none;
+  border: none;
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  margin-left: 0.25rem;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: inline;
+  white-space: nowrap;
+}
+
+.portfolio__toggle-btn:hover {
+  color: var(--first-color-alt);
+  transform: translateX(2px);
+}
+
+.portfolio__toggle-btn--less {
+  display: block;
+  margin-top: 0.5rem;
+  margin-left: 0;
+  white-space: normal;
 }
 
 .portfolio__button {
@@ -1741,6 +1783,32 @@ body.dark-theme .tech-carousel-dot.active {
   font-size: 2rem;
   color: var(--first-color);
   flex-shrink: 0;
+}
+
+.whatsapp-icon,
+.email-icon,
+.location-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+
+.whatsapp-icon:hover,
+.email-icon:hover,
+.location-icon:hover {
+  transform: scale(1.1);
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+.email-icon:hover .contact__icon,
+.location-icon:hover .contact__icon {
+  color: var(--first-color-alt);
 }
 
 .contact__title {
