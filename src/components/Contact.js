@@ -24,7 +24,13 @@ function Contact() {
             </div>
           </div>
           <div className="contact__information">
-            <i className="uil uil-envelope contact__icon"></i>
+            <a
+              href="mailto:rennider10@gmail.com"
+              className="email-icon"
+              title="Enviar email"
+            >
+              <i className="uil uil-envelope contact__icon"></i>
+            </a>
 
             <div>
               <h3 className="contact__title">Email</h3>
@@ -32,7 +38,15 @@ function Contact() {
             </div>
           </div>
           <div className="contact__information">
-            <i className="uil uil-map-marker contact__icon"></i>
+            <a
+              href="https://www.google.com/maps/search/Betim+-+MG"
+              className="location-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Ver localização no Google Maps"
+            >
+              <i className="uil uil-map-marker contact__icon"></i>
+            </a>
 
             <div>
               <h3 className="contact__title">Localização</h3>
