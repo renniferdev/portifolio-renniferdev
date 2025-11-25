@@ -29,6 +29,8 @@ function Contact() {
 
     try {
       // Usar URL completa do backend
+      // Em desenvolvimento: http://localhost:5000
+      // Em produção: https://seu-backend-vercel.vercel.app
       const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
       const fullUrl = `${apiUrl}/api/send-email`;
       
