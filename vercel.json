@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "env": {
+    "MAILERSEND_API_KEY": "@mailersend_api_key",
+    "MAILERSEND_FROM_EMAIL": "@mailersend_from_email"
+  }
+}
