@@ -102,6 +102,15 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
+// Rota raiz
+app.get('/', (req, res) => {
+  res.status(200).json({ 
+    message: 'Backend do Portfólio Rennifer',
+    status: 'online',
+    version: '1.0.0'
+  });
+});
+
 // Rota de health check
 app.get('/api/health', (req, res) => {
   console.log('🏥 Health check recebido');

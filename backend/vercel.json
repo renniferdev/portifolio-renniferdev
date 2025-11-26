@@ -4,26 +4,12 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "api/*.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ],
-  "env": {
-    "GMAIL_USER": "gmail_user",
-    "GMAIL_PASSWORD": "gmail_password",
-    "GMAIL_FROM_NAME": "gmail_from_name",
-    "GMAIL_RECIPIENT_EMAIL": "gmail_recipient_email"
-  }
+  ]
 }
