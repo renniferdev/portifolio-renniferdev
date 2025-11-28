@@ -31,14 +31,8 @@ function Contact() {
       // Usar URL completa do backend
       // Em desenvolvimento: http://localhost:5000
       // Em produção: https://seu-backend-vercel.vercel.app
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-      const fullUrl = `${apiUrl}/api/send-email`;
-      
-      console.log('🔗 URL da API:', fullUrl);
-      console.log('📤 Enviando requisição POST...');
-      console.log('📦 Payload:', JSON.stringify(formData, null, 2));
-
-      const response = await fetch(fullUrl, {
+      const apiUrl = process.env.REACT_APP_API_URL || 'https://backend-rho-weld-58.vercel.app';
+      const response = await fetch(`${apiUrl}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

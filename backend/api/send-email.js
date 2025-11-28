@@ -1,5 +1,3 @@
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const nodemailer = require('nodemailer');
 
 // Configurar transporter do Nodemailer com Gmail
@@ -10,6 +8,13 @@ const transporter = nodemailer.createTransport({
     pass: process.env.GMAIL_PASSWORD,
   },
 });
+
+// Debug: Verificar se as variáveis estão carregadas
+console.log('🔍 Verificando variáveis de ambiente:');
+console.log('  - GMAIL_USER:', process.env.GMAIL_USER ? '✅ Configurado' : '❌ Não configurado');
+console.log('  - GMAIL_PASSWORD:', process.env.GMAIL_PASSWORD ? '✅ Configurado' : '❌ Não configurado');
+console.log('  - GMAIL_FROM_NAME:', process.env.GMAIL_FROM_NAME ? '✅ Configurado' : '❌ Não configurado');
+console.log('  - GMAIL_RECIPIENT_EMAIL:', process.env.GMAIL_RECIPIENT_EMAIL ? '✅ Configurado' : '❌ Não configurado');
 
 module.exports = async (req, res) => {
   // Configurar CORS
@@ -35,6 +40,18 @@ module.exports = async (req, res) => {
   console.log('📝 Dados recebidos:', req.body);
 
   try {
+    // Verificar variáveis de ambiente ANTES de tudo
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASSWORD) {
+      console.error('❌ ERRO CRÍTICO: Variáveis de ambiente não configuradas!');
+      console.error('   GMAIL_USER:', process.env.GMAIL_USER ? 'OK' : 'FALTANDO');
+      console.error('   GMAIL_PASSWORD:', process.env.GMAIL_PASSWORD ? 'OK' : 'FALTANDO');
+      return res.status(500).json({
+        success: false,
+        message: 'Erro ao enviar email. Tente novamente mais tarde.',
+        error: 'Variáveis de ambiente não configuradas no servidor',
+      });
+    }
+
     const { name, email, projeto, message } = req.body;
 
     // Validar dados
