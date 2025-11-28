@@ -28,14 +28,14 @@ function Contact() {
     console.log('📝 Dados do formulário:', formData);
 
     try {
-      // Usar URL completa do backend
-      // Em desenvolvimento: http://localhost:5000
-      // Em produção: https://seu-backend-vercel.vercel.app
       const apiUrl = process.env.REACT_APP_API_URL || 'https://backend-rho-weld-58.vercel.app';
+      console.log('🔗 URL do backend:', apiUrl);
+
       const response = await fetch(`${apiUrl}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(formData),
       });
@@ -43,17 +43,15 @@ function Contact() {
       console.log('📨 Resposta recebida:', response.status, response.statusText);
       console.log('📍 URL da resposta:', response.url);
 
-      // Verificar se a resposta é JSON antes de fazer parse
       const contentType = response.headers.get('content-type');
       let data;
       
       if (contentType && contentType.includes('application/json')) {
         data = await response.json();
       } else {
-        // Se não for JSON, tentar ler como texto
         const text = await response.text();
         console.error('❌ Resposta não é JSON:', text);
-        throw new Error('Servidor retornou resposta inválida. Backend pode não estar rodando.');
+        throw new Error('Servidor retornou resposta inválida');
       }
 
       console.log('📋 Dados da resposta:', data);
@@ -77,15 +75,8 @@ function Contact() {
       console.error('❌ Erro ao enviar email:', error);
       console.error('📍 Tipo de erro:', error.name);
       console.error('💬 Mensagem:', error.message);
-      console.error('🔍 Stack:', error.stack);
       
-      // Mensagem de erro mais específica
-      let errorMessage = 'Erro ao enviar email. Verifique sua conexão e tente novamente.';
-      if (error.message.includes('Backend')) {
-        errorMessage = 'Backend não está respondendo. Certifique-se de que o servidor está rodando na porta 5000.';
-      }
-      
-      setMessage(errorMessage);
+      setMessage('Erro ao enviar email. Tente novamente mais tarde.');
       setMessageType('error');
     } finally {
       setLoading(false);
