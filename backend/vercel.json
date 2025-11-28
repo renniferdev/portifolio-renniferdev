@@ -2,18 +2,44 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/*.js",
+      "src": "api/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/send-email.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/health.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/debug.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/send-email",
+      "dest": "/api/send-email.js"
     },
     {
-      "src": "/",
+      "src": "/api/health",
+      "dest": "/api/health.js"
+    },
+    {
+      "src": "/api/debug",
+      "dest": "/api/debug.js"
+    },
+    {
+      "src": "/(.*)",
       "dest": "/api/index.js"
     }
-  ]
+  ],
+  "env": {
+    "GMAIL_USER": "@gmail_user",
+    "GMAIL_PASSWORD": "@gmail_password",
+    "GMAIL_FROM_NAME": "@gmail_from_name",
+    "GMAIL_RECIPIENT_EMAIL": "@gmail_recipient_email"
+  }
 }
