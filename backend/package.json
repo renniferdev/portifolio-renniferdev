@@ -2,10 +2,11 @@
   "name": "portifolio-backend",
   "version": "1.0.0",
   "description": "Backend API para envio de emails do portfólio",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node index.js",
+    "dev": "node index.js",
+    "build": "echo 'Build complete'"
   },
   "keywords": ["email", "api", "brevo"],
   "author": "Rennifer",
