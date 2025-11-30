@@ -28,7 +28,7 @@ function Contact() {
     console.log('📝 Dados do formulário:', formData);
 
     try {
-      const apiUrl = process.env.REACT_APP_API_URL || 'https://backend-rho-weld-58.vercel.app';
+      const apiUrl = process.env.REACT_APP_API_URL || 'https://backend-portfolio-tau-puce.vercel.app';
       console.log('🔗 URL do backend:', apiUrl);
 
       const response = await fetch(`${apiUrl}/api/send-email`, {
