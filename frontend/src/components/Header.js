@@ -147,17 +147,17 @@ function Header() {
         >
           <ul className="nav__list grid">
             <li className="nav__item">
-              <a 
-                href="#home" 
+              <a
+                href="#home"
                 className={`nav__link ${activeLink === 'home' ? 'active-link' : ''}`}
                 onClick={(e) => handleLinkClick('home', e)}
               >
-                <i className="uil uil-home nav__icon"></i> Página inicial
+                <i className="uil uil-estate nav__icon"></i> Início
               </a>
             </li>
             <li className="nav__item">
-              <a 
-                href="#about" 
+              <a
+                href="#about"
                 className={`nav__link ${activeLink === 'about' ? 'active-link' : ''}`}
                 onClick={(e) => handleLinkClick('about', e)}
               >
@@ -166,31 +166,31 @@ function Header() {
             </li>
 
             <li className="nav__item">
-              <a 
-                href="#softskills" 
+              <a
+                href="#softskills"
                 className={`nav__link ${activeLink === 'softskills' ? 'active-link' : ''}`}
                 onClick={(e) => handleLinkClick('softskills', e)}
               >
-                <i className="uil uil-briefcase nav__icon"></i> Soft skills
+                <i className="uil uil-swatchbook nav__icon"></i> Skills
               </a>
             </li>
 
             <li className="nav__item">
-              <a 
-                href="#portfolio" 
+              <a
+                href="#portfolio"
                 className={`nav__link ${activeLink === 'portfolio' ? 'active-link' : ''}`}
                 onClick={(e) => handleLinkClick('portfolio', e)}
               >
-                <i className="uil uil-image nav__icon"></i> Meus Projetos
+                <i className="uil uil-briefcase-alt nav__icon"></i> Projetos
               </a>
             </li>
             <li className="nav__item">
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className={`nav__link ${activeLink === 'contact' ? 'active-link' : ''}`}
                 onClick={(e) => handleLinkClick('contact', e)}
               >
-                <i className="uil uil-envelope nav__icon"></i> Fale comigo
+                <i className="uil uil-envelope-alt nav__icon"></i> Contato
               </a>
             </li>
           </ul>

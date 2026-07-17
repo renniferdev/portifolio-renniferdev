@@ -24,12 +24,8 @@ function Contact() {
     setLoading(true);
     setMessage('');
 
-    console.log('📧 Iniciando envio de email...');
-    console.log('📝 Dados do formulário:', formData);
-
     try {
       const apiUrl = process.env.REACT_APP_API_URL || 'https://backend-portfolio-tau-puce.vercel.app';
-      console.log('🔗 URL do backend:', apiUrl);
 
       const response = await fetch(`${apiUrl}/api/send-email`, {
         method: 'POST',
@@ -40,24 +36,16 @@ function Contact() {
         body: JSON.stringify(formData),
       });
 
-      console.log('📨 Resposta recebida:', response.status, response.statusText);
-      console.log('📍 URL da resposta:', response.url);
-
       const contentType = response.headers.get('content-type');
       let data;
-      
+
       if (contentType && contentType.includes('application/json')) {
         data = await response.json();
       } else {
-        const text = await response.text();
-        console.error('❌ Resposta não é JSON:', text);
         throw new Error('Servidor retornou resposta inválida');
       }
 
-      console.log('📋 Dados da resposta:', data);
-
       if (response.ok) {
-        console.log('✅ Email enviado com sucesso!');
         setMessage('Email enviado com sucesso! Obrigado pelo contato.');
         setMessageType('success');
         setFormData({
@@ -67,27 +55,24 @@ function Contact() {
           message: '',
         });
       } else {
-        console.error('❌ Erro na resposta:', data);
         setMessage(data.message || 'Erro ao enviar email. Tente novamente.');
         setMessageType('error');
       }
     } catch (error) {
-      console.error('❌ Erro ao enviar email:', error);
-      console.error('📍 Tipo de erro:', error.name);
-      console.error('💬 Mensagem:', error.message);
-      
       setMessage('Erro ao enviar email. Tente novamente mais tarde.');
       setMessageType('error');
     } finally {
       setLoading(false);
-      console.log('✨ Envio finalizado');
     }
   };
 
   return (
     <section className="contact section" id="contact">
-      <div className="section__title">Entre em Contato</div>
-      <span className="section__subtitle">Fale Conosco</span>
+      <div className="section__header">
+        <span className="section__eyebrow">fale_comigo</span>
+        <h2 className="section__title">Entre em Contato</h2>
+        <span className="section__subtitle">Tem um projeto em mente? Vamos conversar.</span>
+      </div>
 
       <div className="contact__container container grid">
         <div>
@@ -200,18 +185,9 @@ function Contact() {
 
           {message && (
             <div
-              style={{
-                padding: '12px',
-                borderRadius: '4px',
-                marginBottom: '16px',
-                backgroundColor:
-                  messageType === 'success' ? '#d4edda' : '#f8d7da',
-                color: messageType === 'success' ? '#155724' : '#721c24',
-                border:
-                  messageType === 'success'
-                    ? '1px solid #c3e6cb'
-                    : '1px solid #f5c6cb',
-              }}
+              className={`contact__status ${
+                messageType === 'success' ? 'contact__status--success' : 'contact__status--error'
+              }`}
             >
               {message}
             </div>
@@ -222,7 +198,6 @@ function Contact() {
               type="submit"
               className="button button--flex"
               disabled={loading}
-              style={{ opacity: loading ? 0.6 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
             >
               {loading ? 'Enviando...' : 'Enviar Mensagem'}
               <i className="uil uil-message button__icon"></i>

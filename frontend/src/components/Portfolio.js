@@ -6,7 +6,7 @@ function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [expandedProjects, setExpandedProjects] = useState({});
 
-  const MAX_DESCRIPTION_LENGTH = 250;
+  const MAX_DESCRIPTION_LENGTH = 200;
 
   const toggleDescription = (projectId) => {
     setExpandedProjects((prev) => ({
@@ -27,16 +27,17 @@ function Portfolio() {
     return description.substring(0, MAX_DESCRIPTION_LENGTH);
   };
 
+  const featuredProject = {
+    id: 1,
+    title: 'Allcanci — Gestão Escolar',
+    description:
+      'Aplicativo desenvolvido para facilitar a gestão escolar, com monitoramento em tempo real de equipamentos, relatórios de consumo e desempenho, e acesso rápido e seguro a informações essenciais para escolas e usuários autorizados. Publicado oficialmente na Google Play Store.',
+    image: '/img/allcanci.PNG',
+    tags: ['React Native', 'TypeScript', 'Tailwind CSS', 'AWS'],
+    modalImages: ['/img/MODAL1allcanci.PNG', '/img/MODALallcanci2.PNG'],
+  };
+
   const projects = [
-    {
-      id: 1,
-      title: 'Allcanci - Gestão Escolar',
-      description:
-        'Primeiro lançamento oficial do aplicativo Fill! Agora você pode acompanhar suas máquinas, visualizar recargas e consultar relatórios de forma rápida e simples. Allcanci é um aplicativo desenvolvido para facilitar a gestão escolar, oferecendo acesso rápido e seguro a informações essenciais para escolas e usuários autorizados. Principais funcionalidades: Monitoramento em tempo real das máquinas Fill • Relatórios de consumo e desempenho',
-      image: '/img/allcanci.PNG',
-      link: '#',
-      modalImages: ['/img/MODAL1allcanci.PNG', '/img/MODALallcanci2.PNG'],
-    },
     {
       id: 2,
       title: 'Fabric & Tales - E-commerce',
@@ -44,6 +45,7 @@ function Portfolio() {
         'Fabric & Tales é um e-commerce moderno desenvolvido com React.js, oferecendo uma experiência de compra fluida e intuitiva. O site apresenta categorias para homens, mulheres e crianças, além de coleções exclusivas e ofertas especiais.',
       image: '/img/fabric-e-tales.png',
       link: 'https://e-commerce-fabric-e-tales.vercel.app/',
+      tags: ['React.js', 'E-commerce'],
     },
     {
       id: 3,
@@ -52,6 +54,7 @@ function Portfolio() {
         'Participe deste quiz interativo desenvolvido em JavaScript, onde você pode testar e aprimorar seu conhecimento em HTML, CSS e JavaScript. Desafie-se com perguntas divertidas e aprenda mais sobre essas tecnologias essenciais para o desenvolvimento web.',
       image: '/img/quiz-img.png',
       link: 'https://quiz-react-kohl-one.vercel.app/',
+      tags: ['JavaScript', 'React'],
     },
     {
       id: 4,
@@ -60,6 +63,7 @@ function Portfolio() {
         'Este é o site da Barbearia Campelo, desenvolvido para promover os serviços de cortes de cabelo, barba e cuidados masculinos. O site combina um design moderno com funcionalidade de agendamento online.',
       image: '/img/barbearia.png',
       link: 'https://barbearia-campelo.vercel.app/',
+      tags: ['React.js', 'Landing Page'],
     },
     {
       id: 5,
@@ -68,44 +72,78 @@ function Portfolio() {
         'O BuscaCEP é uma ferramenta simples e rápida para localizar o endereço completo ao inserir um CEP.',
       image: '/img/Cep.png',
       link: 'https://buscador-njns8a1hx-rennifer-teixeiras-projects.vercel.app/',
+      tags: ['JavaScript', 'API REST'],
     },
   ];
 
   return (
     <section className="portfolio section" id="portfolio">
-      <h2 className="section__title">Portfólio</h2>
-      <span className="section__subtitle">Trabalhos mais recentes</span>
+      <div className="section__header">
+        <span className="section__eyebrow">meus_projetos</span>
+        <h2 className="section__title">Portfólio</h2>
+        <span className="section__subtitle">Trabalhos mais recentes</span>
+      </div>
 
       <div className="portfolio__container container">
-        <div className="test">
+        {/* Projeto em destaque */}
+        <div className="portfolio__featured">
+          <img
+            src={featuredProject.image}
+            alt={featuredProject.title}
+            className="portfolio__featured-img"
+            loading="lazy"
+          />
+          <div className="portfolio__featured-data">
+            <span className="portfolio__featured-tag">
+              <i className="uil uil-android"></i> publicado na play store
+            </span>
+            <h3 className="portfolio__featured-title">{featuredProject.title}</h3>
+            <p className="portfolio__featured-description">
+              {featuredProject.description}
+            </p>
+            <div className="portfolio__tags">
+              {featuredProject.tags.map((tag) => (
+                <span key={tag} className="portfolio__tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <button
+              onClick={() => {
+                setSelectedProject(featuredProject);
+                setIsModalOpen(true);
+              }}
+              className="button button--flex"
+              style={{ width: 'fit-content' }}
+            >
+              Ver demonstração
+              <i className="uil uil-arrow-right button__icon"></i>
+            </button>
+          </div>
+        </div>
+
+        {/* Demais projetos */}
+        <div className="portfolio__grid">
           {projects.map((project) => (
-            <div key={project.id} className="portfolio__content grid">
-              {project.modalImages ? (
-                <button
-                  onClick={() => {
-                    setSelectedProject(project);
-                    setIsModalOpen(true);
-                  }}
-                  className="button button--flex button--small portfolio__button"
-                >
-                  Demonstração
-                  <i className="uil uil-arrow-right button__icon"></i>
-                </button>
-              ) : (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button button--flex button--small portfolio__button"
-                >
-                  Demonstração
-                  <i className="uil uil-arrow-right button__icon"></i>
-                </a>
-              )}
-              <img src={project.image} alt={project.title} className="portfolio__img" />
+            <div key={project.id} className="portfolio__content">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="portfolio__img"
+                loading="lazy"
+              />
 
               <div className="portfolio__data">
                 <h3 className="portfolio__title">{project.title}</h3>
+
+                <div className="portfolio__tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="portfolio__tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
                 <div className="portfolio__description-wrapper">
                   <p className="portfolio__description">
                     {truncateDescription(project.description, project.id)}
@@ -127,12 +165,20 @@ function Portfolio() {
                     Ver menos
                   </button>
                 )}
+
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="portfolio__link"
+                >
+                  Ver demonstração
+                  <i className="uil uil-arrow-right"></i>
+                </a>
               </div>
             </div>
           ))}
         </div>
-
-        <div className="swiper-pagination"></div>
       </div>
 
       {selectedProject && (

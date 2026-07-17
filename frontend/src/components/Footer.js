@@ -6,8 +6,8 @@ function Footer() {
       <div className="footer__bg">
         <div className="footer__container container grid">
           <div>
-            <h1 className="footer__title">Rennifer</h1>
-            <span className="footer__subtitle">Desenvolvedor Front-End</span>
+            <h1 className="footer__title">&lt;/Rennifer&gt;</h1>
+            <span className="footer__subtitle">Desenvolvedor Full Stack</span>
           </div>
 
           <ul className="footer__links">
