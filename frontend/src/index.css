@@ -878,6 +878,78 @@ body.dark-theme .scroll-header {
   line-height: 1.5;
 }
 
+.about__education {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about__education-heading {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+
+.about__education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about__education-card {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  background: var(--card-bg, transparent);
+}
+
+.about__education-top {
+  margin-bottom: 0.5rem;
+}
+
+.about__education-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: var(--font-semi-bold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.about__education-status--done {
+  color: #1a9c5f;
+  background: rgba(26, 156, 95, 0.12);
+}
+
+.about__education-status--progress {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.about__education-degree {
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.about__education-institution {
+  font-size: var(--small-font-size);
+  color: var(--ink-soft);
+  margin-bottom: 0.15rem;
+}
+
+.about__education-period {
+  font-size: var(--small-font-size);
+  color: var(--ink-faint);
+}
+
 /*==================== SKILLS ====================*/
 .technologies {
   padding: 5rem 1rem;
@@ -1197,6 +1269,179 @@ body.dark-theme .portfolio__tag {
 
 .portfolio__link:hover i {
   transform: translateX(3px);
+}
+
+.portfolio__gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  padding-top: 0.5rem;
+  transition: color 0.25s ease;
+  font-family: inherit;
+}
+
+.portfolio__gallery-btn:hover {
+  color: var(--accent);
+}
+
+.portfolio__gallery-btn i {
+  transition: transform 0.25s ease;
+}
+
+.portfolio__gallery-btn:hover i {
+  transform: translateX(3px);
+}
+
+/*==================== GALLERY MODAL ====================*/
+.gallery-modal__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: 1rem;
+  animation: galleryFadeIn 0.25s ease-out;
+}
+
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gallery-modal__content {
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.gallery-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.gallery-modal__title {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--ink);
+  margin: 0;
+}
+
+.gallery-modal__close {
+  background: none;
+  border: none;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.25s ease;
+}
+
+.gallery-modal__close:hover {
+  color: var(--accent);
+}
+
+.gallery-modal__body {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 1rem;
+  background-color: var(--bg, #000);
+}
+
+.gallery-modal__img {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.gallery-modal__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background-color 0.25s ease;
+  z-index: 2;
+}
+
+.gallery-modal__nav:hover {
+  background-color: var(--accent);
+}
+
+.gallery-modal__nav--prev {
+  left: 0.75rem;
+}
+
+.gallery-modal__nav--next {
+  right: 0.75rem;
+}
+
+.gallery-modal__indicator {
+  text-align: center;
+  padding: 0.75rem;
+  font-size: var(--small-font-size);
+  color: var(--ink-soft);
+  border-top: 1px solid var(--border-color);
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-modal__content {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .gallery-modal__img {
+    max-height: 60vh;
+  }
+
+  .gallery-modal__nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
 }
 
 /*==================== CONTACT ====================*/

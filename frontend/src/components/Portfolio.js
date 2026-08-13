@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
+import GalleryModal from './GalleryModal';
 
 function Portfolio() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [expandedProjects, setExpandedProjects] = useState({});
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [galleryProject, setGalleryProject] = useState(null);
 
   const MAX_DESCRIPTION_LENGTH = 200;
 
@@ -40,39 +43,21 @@ function Portfolio() {
   const projects = [
     {
       id: 2,
-      title: 'Fabric & Tales - E-commerce',
+      title: 'Mapa Comercial e Inteligência Geográfica',
       description:
-        'Fabric & Tales é um e-commerce moderno desenvolvido com React.js, oferecendo uma experiência de compra fluida e intuitiva. O site apresenta categorias para homens, mulheres e crianças, além de coleções exclusivas e ofertas especiais.',
-      image: '/img/fabric-e-tales.png',
-      link: 'https://e-commerce-fabric-e-tales.vercel.app/',
-      tags: ['React.js', 'E-commerce'],
+        'Desenvolvimento de mapa web e mobile integrado ao Bitrix24. Visualização de clientes, escolas, prefeituras, empresas e oportunidades comerciais. Filtros por responsável, etapa do funil e localização. Criação e organização de rotas comerciais. Otimização do carregamento de pins por área visível, paginação, cache e carregamento sob demanda. Integração de diferentes bases de dados com geolocalização.',
+      image: '/img/mapa/1.png',
+      tags: ['React', 'React Native', 'Node.js', 'Bitrix24', 'Mapas'],
+      images: ['/img/mapa/1.png', '/img/mapa/2.png', '/img/mapa/3.png', '/img/mapa/4.png'],
     },
     {
       id: 3,
-      title: 'Desafio de Programação: Teste seus conhecimentos!',
+      title: 'Simulador de Orçamentos e Automação de Documentos',
       description:
-        'Participe deste quiz interativo desenvolvido em JavaScript, onde você pode testar e aprimorar seu conhecimento em HTML, CSS e JavaScript. Desafie-se com perguntas divertidas e aprenda mais sobre essas tecnologias essenciais para o desenvolvimento web.',
-      image: '/img/quiz-img.png',
-      link: 'https://quiz-react-kohl-one.vercel.app/',
-      tags: ['JavaScript', 'React'],
-    },
-    {
-      id: 4,
-      title: 'Barbearia Campelo - Website',
-      description:
-        'Este é o site da Barbearia Campelo, desenvolvido para promover os serviços de cortes de cabelo, barba e cuidados masculinos. O site combina um design moderno com funcionalidade de agendamento online.',
-      image: '/img/barbearia.png',
-      link: 'https://barbearia-campelo.vercel.app/',
-      tags: ['React.js', 'Landing Page'],
-    },
-    {
-      id: 5,
-      title: 'Buscador de Cep',
-      description:
-        'O BuscaCEP é uma ferramenta simples e rápida para localizar o endereço completo ao inserir um CEP.',
-      image: '/img/Cep.png',
-      link: 'https://buscador-njns8a1hx-rennifer-teixeiras-projects.vercel.app/',
-      tags: ['JavaScript', 'API REST'],
+        'Desenvolvimento de sistema de PDV e simulação de propostas. Uso em feiras, eventos e operações comerciais. Formulários inteligentes com cálculos automáticos e regras de negócio. Automação da geração e do preenchimento de contratos, propostas e documentos corporativos em Python. Redução de erros manuais e tarefas repetitivas no fluxo comercial.',
+      image: '/img/simulador/1.png',
+      tags: ['React', 'Python', 'Automação', 'PDV'],
+      images: ['/img/simulador/1.png', '/img/simulador/2.png', '/img/simulador/3.png', '/img/simulador/4.png'],
     },
   ];
 
@@ -166,15 +151,30 @@ function Portfolio() {
                   </button>
                 )}
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="portfolio__link"
-                >
-                  Ver demonstração
-                  <i className="uil uil-arrow-right"></i>
-                </a>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="portfolio__link"
+                  >
+                    Ver demonstração
+                    <i className="uil uil-arrow-right"></i>
+                  </a>
+                )}
+
+                {project.images && project.images.length > 0 && (
+                  <button
+                    onClick={() => {
+                      setGalleryProject(project);
+                      setIsGalleryOpen(true);
+                    }}
+                    className="portfolio__gallery-btn"
+                  >
+                    Ver imagens
+                    <i className="uil uil-arrow-right"></i>
+                  </button>
+                )}
               </div>
             </div>
           ))}
@@ -187,6 +187,15 @@ function Portfolio() {
           onClose={() => setIsModalOpen(false)}
           title={selectedProject.title}
           images={selectedProject.modalImages}
+        />
+      )}
+
+      {galleryProject && (
+        <GalleryModal
+          isOpen={isGalleryOpen}
+          onClose={() => setIsGalleryOpen(false)}
+          title={galleryProject.title}
+          images={galleryProject.images}
         />
       )}
     </section>
