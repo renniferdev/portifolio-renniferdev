@@ -102,7 +102,7 @@ function Contact() {
 
             <div>
               <h3 className="contact__title">Email</h3>
-              <span className="contact__subtitle">rennider10@gmail.com</span>
+              <span className="contact__subtitle">rennifer10@gmail.com</span>
             </div>
           </div>
           <div className="contact__information">
