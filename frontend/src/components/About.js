@@ -1,26 +1,20 @@
 import React from 'react';
 
 function About() {
-  const highlights = [
+  const education = [
     {
-      icon: 'uil uil-graduation-cap',
-      title: 'Formação',
-      text: 'Análise e Desenvolvimento de Sistemas, com prática em metodologias ágeis (Scrum/Kanban).',
+      status: 'Concluído',
+      statusModifier: 'done',
+      degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
+      institution: 'Prática em metodologias ágeis (Scrum/Kanban)',
+      period: null,
     },
     {
-      icon: 'uil uil-mobile-android',
-      title: 'Allcanci — app publicado',
-      text: 'Criador do app de gestão escolar Allcanci, disponível na Google Play Store, feito com React Native, TypeScript e AWS.',
-    },
-    {
-      icon: 'uil uil-server-network',
-      title: 'Projeto atual',
-      text: 'Desenvolvendo um sistema completo de gestão escolar com APIs, autenticação e monitoramento de equipamentos em tempo real.',
-    },
-    {
-      icon: 'uil uil-git',
-      title: 'Práticas de engenharia',
-      text: 'APIs RESTful, versionamento com Git, código limpo e testável — do front-end ao banco de dados relacional.',
+      status: 'Em andamento',
+      statusModifier: 'progress',
+      degree: 'Pós-Graduação em Engenharia de Software',
+      institution: 'Instituto Estácio de Sá — Campus Alterosas, Betim',
+      period: 'Jan/2026 – Dez/2026 (previsão de conclusão)',
     },
   ];
 
@@ -41,18 +35,34 @@ function About() {
           </p>
         </div>
 
-        <div className="about__highlights">
-          {highlights.map((item, index) => (
-            <div key={index} className="about__highlight">
-              <div className="about__highlight-icon">
-                <i className={item.icon}></i>
+        <div className="about__education">
+          <h3 className="about__education-heading">Formação</h3>
+
+          <div className="about__education-list">
+            {education.map((item, index) => (
+              <div key={index} className="about__education-card">
+                <div className="about__education-top">
+                  <span
+                    className={`about__education-status about__education-status--${item.statusModifier}`}
+                  >
+                    <i
+                      className={
+                        item.statusModifier === 'done'
+                          ? 'uil uil-check-circle'
+                          : 'uil uil-clock-nine'
+                      }
+                    ></i>
+                    {item.status}
+                  </span>
+                </div>
+                <h4 className="about__education-degree">{item.degree}</h4>
+                <p className="about__education-institution">{item.institution}</p>
+                {item.period && (
+                  <p className="about__education-period">{item.period}</p>
+                )}
               </div>
-              <div>
-                <h3 className="about__highlight-title">{item.title}</h3>
-                <p className="about__highlight-text">{item.text}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
