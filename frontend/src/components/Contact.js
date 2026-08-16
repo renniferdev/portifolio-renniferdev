@@ -93,7 +93,7 @@ function Contact() {
           </div>
           <div className="contact__information">
             <a
-              href="mailto:rennider10@gmail.com"
+              href="mailto:rennifer10@gmail.com"
               className="email-icon"
               title="Enviar email"
             >
