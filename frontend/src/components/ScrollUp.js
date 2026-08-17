@@ -28,12 +28,15 @@ function ScrollUp() {
   return (
     <>
       {isVisible && (
-        <a href="#" className="scrollup" id="scroll-up" onClick={(e) => {
-          e.preventDefault();
-          scrollToTop();
-        }}>
+        <button
+          type="button"
+          className="scrollup"
+          id="scroll-up"
+          aria-label="Voltar ao topo"
+          onClick={scrollToTop}
+        >
           <i className="uil uil-arrow-up scrollup__icon"></i>
-        </a>
+        </button>
       )}
     </>
   );

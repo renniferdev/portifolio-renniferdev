@@ -6,15 +6,15 @@ function About() {
       status: 'Concluído',
       statusModifier: 'done',
       degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
-      institution: 'Prática em metodologias ágeis (Scrum/Kanban)',
-      period: null,
+      institution: 'Instituto Estácio de Sá',
+      period: 'Jan/2023 – Jul/2025',
     },
     {
       status: 'Em andamento',
       statusModifier: 'progress',
       degree: 'Pós-Graduação em Engenharia de Software',
-      institution: 'Instituto Estácio de Sá — Campus Alterosas, Betim',
-      period: 'Jan/2026 – Dez/2026 (previsão de conclusão)',
+      institution: 'Instituto Estácio de Sá',
+      period: 'Jan/2026 – Dez/2026',
     },
   ];
 
@@ -22,16 +22,16 @@ function About() {
     <section className="about section" id="about">
       <div className="section__header">
         <span className="section__eyebrow">sobre_mim</span>
-        <h2 className="section__title">Quem constrói o produto</h2>
+        <h2 className="section__title">Sobre mim</h2>
       </div>
 
       <div className="about__container container">
         <div className="about__data">
           <p className="about__description">
-            Desenvolvedor Full Stack com experiência na criação de soluções completas e escaláveis, do front-end ao back-end. Apaixonado por tecnologia, busco constantemente aprimorar minhas habilidades em JavaScript, Node.js, React, Next.js e bancos de dados relacionais, entregando produtos seguros, performáticos e alinhados às necessidades do usuário final.
+            Desenvolvedor Full Stack com experiência na criação de soluções completas, atuando desde a construção de interfaces até APIs, bancos de dados, integrações e publicação de aplicações.
           </p>
           <p className="about__description">
-            Meu objetivo é me tornar um Desenvolvedor Full Stack de destaque, contribuindo positivamente para os projetos e objetivos da empresa.
+            Trabalho com JavaScript, TypeScript, React, React Native, Next.js e Node.js no dia a dia, integrando bancos de dados relacionais e não relacionais, APIs REST e serviços em nuvem (AWS) para entregar produtos completos, do back-end à interface.
           </p>
         </div>
 

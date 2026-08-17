@@ -70,7 +70,7 @@ function Contact() {
     <section className="contact section" id="contact">
       <div className="section__header">
         <span className="section__eyebrow">fale_comigo</span>
-        <h2 className="section__title">Entre em Contato</h2>
+        <h2 className="section__title">Entre em contato</h2>
         <span className="section__subtitle">Tem um projeto em mente? Vamos conversar.</span>
       </div>
 
@@ -83,6 +83,7 @@ function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               title="Entre em contato pelo WhatsApp"
+              aria-label="Entre em contato pelo WhatsApp"
             >
               <i className="uil uil-whatsapp contact__icon"></i>
             </a>
@@ -96,6 +97,7 @@ function Contact() {
               href="mailto:rennifer10@gmail.com"
               className="email-icon"
               title="Enviar email"
+              aria-label="Enviar email para rennifer10@gmail.com"
             >
               <i className="uil uil-envelope contact__icon"></i>
             </a>
@@ -112,6 +114,7 @@ function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               title="Ver localização no Google Maps"
+              aria-label="Ver localização no Google Maps"
             >
               <i className="uil uil-map-marker contact__icon"></i>
             </a>
@@ -121,18 +124,56 @@ function Contact() {
               <span className="contact__subtitle">Betim - MG</span>
             </div>
           </div>
+          <div className="contact__information">
+            <a
+              href="https://www.linkedin.com/in/rennifer-amilton-teixeira-08983219a/"
+              className="linkedin-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Meu perfil no LinkedIn"
+              aria-label="Meu perfil no LinkedIn"
+            >
+              <i className="uil uil-linkedin-alt contact__icon"></i>
+            </a>
+
+            <div>
+              <h3 className="contact__title">LinkedIn</h3>
+              <span className="contact__subtitle">rennifer-amilton-teixeira</span>
+            </div>
+          </div>
+          <div className="contact__information">
+            <a
+              href="https://github.com/renniferdev"
+              className="github-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Meu perfil no GitHub"
+              aria-label="Meu perfil no GitHub"
+            >
+              <i className="uil uil-github-alt contact__icon"></i>
+            </a>
+
+            <div>
+              <h3 className="contact__title">GitHub</h3>
+              <span className="contact__subtitle">github.com/renniferdev</span>
+            </div>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} className="contact__form grid">
           <div className="contact__inputs grid">
             <div className="contact__content">
-              <label className="contact__label">Nome</label>
+              <label htmlFor="contact-name" className="contact__label">
+                Nome <span className="contact__required" aria-hidden="true">*</span>
+              </label>
               <input
+                id="contact-name"
                 type="text"
                 name="name"
                 placeholder="Digite seu nome"
                 autoComplete="off"
                 required
+                aria-required="true"
                 className="contact__input"
                 value={formData.name}
                 onChange={handleChange}
@@ -140,13 +181,17 @@ function Contact() {
               />
             </div>
             <div className="contact__content">
-              <label className="contact__label">Email</label>
+              <label htmlFor="contact-email" className="contact__label">
+                Email <span className="contact__required" aria-hidden="true">*</span>
+              </label>
               <input
+                id="contact-email"
                 type="email"
                 name="email"
                 placeholder="Digite seu email"
                 autoComplete="off"
                 required
+                aria-required="true"
                 className="contact__input"
                 value={formData.email}
                 onChange={handleChange}
@@ -155,13 +200,17 @@ function Contact() {
             </div>
           </div>
           <div className="contact__content">
-            <label className="contact__label">Projeto</label>
+            <label htmlFor="contact-subject" className="contact__label">
+              Assunto <span className="contact__required" aria-hidden="true">*</span>
+            </label>
             <input
+              id="contact-subject"
               type="text"
               name="projeto"
-              placeholder="Digite seu Projeto"
+              placeholder="Como posso ajudar?"
               autoComplete="off"
               required
+              aria-required="true"
               className="contact__input"
               value={formData.projeto}
               onChange={handleChange}
@@ -169,13 +218,17 @@ function Contact() {
             />
           </div>
           <div className="contact__content">
-            <label className="contact__label">Mensagem</label>
+            <label htmlFor="contact-message" className="contact__label">
+              Mensagem <span className="contact__required" aria-hidden="true">*</span>
+            </label>
             <textarea
+              id="contact-message"
               name="message"
               cols="30"
               rows="10"
               placeholder="Digite sua mensagem"
               required
+              aria-required="true"
               className="contact__input"
               value={formData.message}
               onChange={handleChange}
