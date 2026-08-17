@@ -68,7 +68,7 @@ const ModalContent = styled.div`
 
 const ModalHeader = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid rgba(124, 58, 237, 0.1);
@@ -76,18 +76,20 @@ const ModalHeader = styled.div`
   z-index: 10;
 `;
 
-const ModalTitle = styled.h2`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--title-color);
-  margin: 0;
+const DownloadLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
   background: linear-gradient(135deg, var(--first-color) 0%, var(--first-color-alt) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: transform 0.25s ease;
 
-  @media (max-width: 480px) {
-    font-size: 1.25rem;
+  &:hover {
+    transform: translateY(-2px);
   }
 `;
 
@@ -149,7 +151,11 @@ function CVModal({ isOpen, onClose }) {
     <ModalOverlay onClick={handleBackdropClick}>
       <ModalContent>
         <ModalHeader>
-          <CloseButton onClick={onClose}>
+          <DownloadLink href={cvPath} download aria-label="Baixar currículo em PDF">
+            <i className="uil uil-download-alt"></i>
+            Baixar PDF
+          </DownloadLink>
+          <CloseButton onClick={onClose} aria-label="Fechar">
             <i className="uil uil-times"></i>
           </CloseButton>
         </ModalHeader>

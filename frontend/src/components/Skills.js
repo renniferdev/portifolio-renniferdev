@@ -5,15 +5,23 @@ function Skills() {
 
   const groupedCategories = [
     {
+      name: 'Linguagens',
+      icon: 'uil uil-brackets-curly',
+      technologies: [
+        { name: 'JavaScript', icon: 'devicon-javascript-plain colored' },
+        { name: 'TypeScript', icon: 'devicon-typescript-plain colored' },
+        { name: 'Python', icon: 'devicon-python-plain colored' },
+        { name: 'HTML5', icon: 'devicon-html5-plain colored' },
+        { name: 'CSS3', icon: 'devicon-css3-plain colored' },
+      ],
+    },
+    {
       name: 'Front-end',
       icon: 'uil uil-monitor',
       technologies: [
-        { name: 'JavaScript', icon: 'devicon-javascript-plain colored' },
         { name: 'React.js', icon: 'devicon-react-original colored' },
         { name: 'Next.js', icon: 'devicon-nextjs-original-wordmark colored' },
-        { name: 'TypeScript', icon: 'devicon-typescript-plain colored' },
-        { name: 'HTML5', icon: 'devicon-html5-plain colored' },
-        { name: 'CSS3', icon: 'devicon-css3-plain colored' },
+        { name: 'React Native', icon: 'devicon-react-original colored' },
         { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-plain colored' },
         { name: 'SASS', icon: 'devicon-sass-plain colored' },
       ],
@@ -24,14 +32,21 @@ function Skills() {
       technologies: [
         { name: 'Node.js', icon: 'devicon-nodejs-plain colored' },
         { name: 'Express', icon: 'devicon-express-original colored' },
+        { name: 'REST APIs', icon: 'uil uil-server-network' },
+      ],
+    },
+    {
+      name: 'Banco de Dados',
+      icon: 'uil uil-database',
+      technologies: [
         { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
         { name: 'MySQL', icon: 'devicon-mysql-plain colored' },
-        { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
+        { name: 'DynamoDB', icon: 'devicon-dynamodb-plain colored' },
         { name: 'Prisma ORM', icon: 'devicon-prisma-original colored' },
       ],
     },
     {
-      name: 'DevOps & Tools',
+      name: 'DevOps & Cloud',
       icon: 'uil uil-cloud',
       technologies: [
         { name: 'AWS', image: '/img/aws.png' },
@@ -39,15 +54,14 @@ function Skills() {
         { name: 'Vercel', icon: 'devicon-vercel-original colored' },
         { name: 'Git', icon: 'devicon-git-plain colored' },
         { name: 'GitHub', icon: 'devicon-github-original colored' },
-        { name: 'Figma', icon: 'devicon-figma-plain colored' },
       ],
     },
     {
-      name: 'Linguagens',
+      name: 'Ferramentas & Integrações',
       icon: 'uil uil-wrench',
       technologies: [
-        { name: 'Python', icon: 'devicon-python-plain colored' },
-        { name: 'React Native', icon: 'devicon-react-original colored' },
+        { name: 'Bling', icon: 'uil uil-invoice' },
+        { name: 'Bitrix24', icon: 'uil uil-puzzle-piece' },
       ],
     },
   ];

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ModalOverlay = styled.div`
@@ -145,127 +145,6 @@ const ModalBody = styled.div`
   }
 `;
 
-const ImageContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: contain;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  animation: zoomIn 0.3s ease-out;
-
-  @keyframes zoomIn {
-    from {
-      transform: scale(0.95);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 480px) {
-    max-height: 300px;
-  }
-`;
-
-const ContentSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const SectionTitle = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--first-color);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-
-  &::before {
-    content: '✨';
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.125rem;
-  }
-`;
-
-const Description = styled.p`
-  font-size: 0.938rem;
-  color: var(--text-color);
-  line-height: 1.8;
-  margin: 0;
-
-  @media (max-width: 480px) {
-    font-size: 0.875rem;
-  }
-`;
-
-const FeatureList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-`;
-
-const FeatureItem = styled.li`
-  font-size: 0.938rem;
-  color: var(--text-color);
-  padding-left: 1.5rem;
-  position: relative;
-  line-height: 1.6;
-
-  &::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--first-color);
-    font-weight: bold;
-    font-size: 1.25rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.875rem;
-  }
-`;
-
-const UpdateInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(124, 58, 237, 0.02) 100%);
-  border-radius: 0.75rem;
-  border-left: 4px solid var(--first-color);
-  margin-top: 1rem;
-`;
-
-const UpdateLabel = styled.span`
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--first-color);
-`;
-
-const UpdateDate = styled.span`
-  font-size: 0.875rem;
-  color: var(--text-color-light);
-`;
-
 const Divider = styled.hr`
   border: none;
   height: 1px;
@@ -282,20 +161,6 @@ const LoginContainer = styled.div`
   border-radius: 1rem;
   border: 2px solid rgba(124, 58, 237, 0.2);
   margin: 1.5rem 0;
-`;
-
-const LoginTitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--first-color);
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-
-  @media (max-width: 480px) {
-    font-size: 1.25rem;
-  }
 `;
 
 const LoginDescription = styled.p`
@@ -407,7 +272,7 @@ function Modal({ isOpen, onClose, title, images }) {
       <ModalContent>
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>
-          <CloseButton onClick={onClose}>
+          <CloseButton onClick={onClose} aria-label="Fechar">
             <i className="uil uil-times"></i>
           </CloseButton>
         </ModalHeader>
@@ -441,13 +306,13 @@ function Modal({ isOpen, onClose, title, images }) {
                 <i className="uil uil-globe"></i>
                 Acessar Web
               </AccessLink>
-              <AccessLink 
-                href="https://play.google.com/store/apps/details?id=com.allcanci.Allcanci&pcampaignid=web_share" 
-                target="_blank" 
+              <AccessLink
+                href="https://play.google.com/store/apps/details?id=com.allcanci.Allcanci&pcampaignid=web_share"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <i className="uil uil-android"></i>
-                Play Store
+                Google Play
               </AccessLink>
             </AccessLinksContainer>
 

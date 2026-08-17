@@ -24,15 +24,15 @@ function Home() {
 
   const technologies = [
     'React.js',
+    'React Native',
     'Node.js',
     'TypeScript',
-    'PostgreSQL',
-    'Docker',
     'AWS',
+    'Docker',
   ];
 
   const stats = [
-    { value: '1 app', label: 'publicado na Play Store' },
+    { value: '1+', label: 'app publicado na Google Play' },
     { value: '5+', label: 'projetos entregues' },
     { value: 'Full Stack', label: 'do banco à interface' },
   ];

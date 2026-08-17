@@ -136,7 +136,7 @@ function Header() {
   return (
     <header className="header" id="header">
       <nav className="nav container">
-        <a href="#" className="nav__logo">
+        <a href="#home" className="nav__logo" onClick={(e) => handleLinkClick('home', e)}>
           &lt;/Rennifer&gt;
         </a>
 
@@ -194,17 +194,38 @@ function Header() {
               </a>
             </li>
           </ul>
-          <i className="uil uil-times nav__close" id="nav-close" onClick={toggleMenu}></i>
+          <i
+            className="uil uil-times nav__close"
+            id="nav-close"
+            onClick={toggleMenu}
+            role="button"
+            tabIndex={0}
+            aria-label="Fechar menu"
+            onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
+          ></i>
         </div>
 
         <div className="nav__btns">
-          <i className="uil uil-moon change-theme" id="theme-button" onClick={toggleTheme}></i>
+          <i
+            className="uil uil-moon change-theme"
+            id="theme-button"
+            onClick={toggleTheme}
+            role="button"
+            tabIndex={0}
+            aria-label="Alternar tema claro/escuro"
+            onKeyDown={(e) => e.key === 'Enter' && toggleTheme()}
+          ></i>
 
-          <div 
+          <div
             ref={toggleButtonRef}
-            className="nav__toggle" 
-            id="nav-toggle" 
+            className="nav__toggle"
+            id="nav-toggle"
             onClick={toggleMenu}
+            role="button"
+            tabIndex={0}
+            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={isMenuOpen}
+            onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
           >
             <i className="uil uil-apps"></i>
           </div>
