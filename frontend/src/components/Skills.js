@@ -33,6 +33,7 @@ function Skills() {
         { name: 'Node.js', icon: 'devicon-nodejs-plain colored' },
         { name: 'Express', icon: 'devicon-express-original colored' },
         { name: 'REST APIs', icon: 'uil uil-server-network' },
+        { name: 'Webhook', icon: 'uil uil-exchange' },
       ],
     },
     {
@@ -67,12 +68,11 @@ function Skills() {
   ];
 
   return (
-    <div className="technologies" id="softskills">
+    <div className="technologies section" id="softskills">
       <span className="section__eyebrow" style={{ textAlign: 'center' }}>
         minhas_tecnologias
       </span>
       <h2 className="technologies__title">Stack técnica</h2>
-      <span className="technologies__subtitle">Tudo em um só lugar — sem esperar carrossel</span>
 
       <div className="skills__tabs" role="tablist">
         {groupedCategories.map((category, index) => (

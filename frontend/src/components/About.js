@@ -28,10 +28,10 @@ function About() {
       <div className="about__container container">
         <div className="about__data">
           <p className="about__description">
-            Desenvolvedor Full Stack com experiência na criação de soluções completas, atuando desde a construção de interfaces até APIs, bancos de dados, integrações e publicação de aplicações.
+            Gosto de resolver problemas reais de negócio com código — não só "fazer funcionar", mas fazer funcionar rápido, de forma confiável e escalável. Como Desenvolvedor Full Stack, já automatizei processos manuais que tomavam horas, integrei sistemas via APIs e webhooks, e otimizei sistemas críticos em produção.
           </p>
           <p className="about__description">
-            Trabalho com JavaScript, TypeScript, React, React Native, Next.js e Node.js no dia a dia, integrando bancos de dados relacionais e não relacionais, APIs REST e serviços em nuvem (AWS) para entregar produtos completos, do back-end à interface.
+            No dia a dia, trabalho com JavaScript, TypeScript, React, React Native e Node.js, unindo back-end, front-end, bancos de dados (relacionais e não relacionais) e infraestrutura em nuvem (AWS) para entregar produtos completos — do banco de dados à tela do usuário.
           </p>
         </div>
 
