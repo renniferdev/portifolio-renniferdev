@@ -114,5 +114,13 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
+// Rodar servidor local (não usado pela Vercel, que importa `app` como função serverless)
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`✅ Backend rodando em http://localhost:${PORT}`);
+  });
+}
+
 // Exportar para Vercel
 module.exports = app;
