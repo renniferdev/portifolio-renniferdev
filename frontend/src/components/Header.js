@@ -227,7 +227,7 @@ function Header() {
             aria-expanded={isMenuOpen}
             onKeyDown={(e) => e.key === 'Enter' && toggleMenu()}
           >
-            <i className="uil uil-apps"></i>
+            <i className="uil uil-bars"></i>
           </div>
         </div>
       </nav>

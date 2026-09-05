@@ -26,6 +26,7 @@ function Home() {
     'React.js',
     'React Native',
     'Node.js',
+    'PostgreSQL',
     'TypeScript',
     'AWS',
     'Docker',
@@ -117,7 +118,7 @@ function Home() {
           <div className="home__profile-wrapper">
             <div className="home__profile-frame"></div>
             <img
-              src="/img/rennifer.jpg"
+              src="/img/perfil.png"
               alt="Rennifer - Desenvolvedor Full Stack"
               className="home__profile-img"
             />

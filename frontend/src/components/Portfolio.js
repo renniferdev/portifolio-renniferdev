@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import Modal from './Modal';
 import GalleryModal from './GalleryModal';
 import CaseStudyModal from './CaseStudyModal';
 
 function Portfolio() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [galleryProject, setGalleryProject] = useState(null);
   const [isCaseOpen, setIsCaseOpen] = useState(false);
@@ -161,9 +158,6 @@ function Portfolio() {
         'Aplicativo desenvolvido para facilitar a gestão escolar, com monitoramento em tempo real de equipamentos, relatórios de consumo e desempenho, e acesso rápido e seguro a informações essenciais para escolas e usuários autorizados. Publicado oficialmente na Google Play Store.',
       image: '/img/allcanci.PNG',
       tags: ['React Native', 'TypeScript', 'Tailwind CSS', 'AWS'],
-      modalImages: ['/img/MODAL1allcanci.PNG', '/img/MODALallcanci2.PNG'],
-      playStoreLink:
-        'https://play.google.com/store/apps/details?id=com.allcanci.Allcanci&pcampaignid=web_share',
       badge: { icon: 'uil uil-android', text: 'Publicado na Google Play' },
       problem:
         'Escolas precisavam de mais visibilidade sobre o estado dos equipamentos e do consumo, com informações dispersas e acesso pouco seguro aos dados de gestão.',
@@ -217,30 +211,13 @@ function Portfolio() {
               ))}
             </div>
             <div className="portfolio__featured-actions">
-              {featuredProject.playStoreLink && (
-                <a
-                  href={featuredProject.playStoreLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button button--flex button--small"
-                >
-                  Google Play
-                  <i className="uil uil-arrow-right button__icon"></i>
-                </a>
-              )}
-
-              {featuredProject.modalImages && (
-                <button
-                  onClick={() => {
-                    setSelectedProject(featuredProject);
-                    setIsModalOpen(true);
-                  }}
-                  className="button button--link button--flex"
-                >
-                  Ver demonstração
-                  <i className="uil uil-arrow-right button__icon"></i>
-                </button>
-              )}
+              <button
+                onClick={() => openCaseStudy(featuredProject)}
+                className="button button--link button--flex"
+              >
+                Ver mais
+                <i className="uil uil-arrow-right button__icon"></i>
+              </button>
 
               {featuredProject.images && featuredProject.images.length > 0 && (
                 <button
@@ -254,14 +231,6 @@ function Portfolio() {
                   <i className="uil uil-arrow-right button__icon"></i>
                 </button>
               )}
-
-              <button
-                onClick={() => openCaseStudy(featuredProject)}
-                className="button button--link button--flex"
-              >
-                Ver mais
-                <i className="uil uil-arrow-right button__icon"></i>
-              </button>
             </div>
           </div>
         </div>
@@ -297,31 +266,6 @@ function Portfolio() {
                 <p className="portfolio__description">{project.description}</p>
 
                 <div className="portfolio__actions">
-                  {project.playStoreLink && (
-                    <a
-                      href={project.playStoreLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="portfolio__link"
-                    >
-                      Google Play
-                      <i className="uil uil-arrow-right"></i>
-                    </a>
-                  )}
-
-                  {project.modalImages && (
-                    <button
-                      onClick={() => {
-                        setSelectedProject(project);
-                        setIsModalOpen(true);
-                      }}
-                      className="portfolio__gallery-btn"
-                    >
-                      Ver demonstração
-                      <i className="uil uil-arrow-right"></i>
-                    </button>
-                  )}
-
                   <button
                     onClick={() => openCaseStudy(project)}
                     className="portfolio__gallery-btn"
@@ -348,15 +292,6 @@ function Portfolio() {
           ))}
         </div>
       </div>
-
-      {selectedProject && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          title={selectedProject.title}
-          images={selectedProject.modalImages}
-        />
-      )}
 
       {galleryProject && (
         <GalleryModal
